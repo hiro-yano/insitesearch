@@ -1,0 +1,28 @@
+.search-area input[type="text"] {
+  padding: 5px 5px 3px;
+  font-size: 16px;
+  border: 1px solid #D6D6D6;
+}
+
+.search-area input[type="text"]:focus {
+  background: #F9F9F9;
+}
+
+.search-result {
+  margin-top: 20px;
+}
+.search-result__hit-num span {
+  font-weight: bold;
+}
+#search-result__list {
+  margin-top: 15px;
+}
+#search-result__list span {
+  display: inline-block;
+  margin-right: 15px;
+  padding: 5px;
+  background: #F2F2F2;
+}
+.target-area {
+  margin-top: 50px;
+}
