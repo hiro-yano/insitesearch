@@ -47,4 +47,17 @@
 
 </body>
 
+<SCRIPT language="JavaScript">
+function popup_modeless(url){
+	var newWin = window.open(
+		url,    //移動先
+		"pop",  //ターゲット名（aタグのtargetと同様）
+		"width=800, height=480"
+	);
+	newWin.focus();
+}
+</SCRIPT>
+
+<INPUT TYPE="button" VALUE="モードレス" onClick="popup_modeless('dialog_target.html')">
+
 </html>
