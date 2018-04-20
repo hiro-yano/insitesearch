@@ -1,63 +1,55 @@
-<!DOCTYPE html>
-<html lang="en" >
-
-<head>
-  <meta charset="UTF-8">
-  <title>An Anonymous Pen on CodePen</title>
-  
-  
-  
-      <link rel="stylesheet" href="css/style.css">
-
-  
-</head>
-
-<body>
-
-  <body>
-  <div class="wrapper">
-    <div class="search-area">
-      <form>
-        <input type="text" id="search-text" placeholder="検索ワードを入力">
-      </form>
-      <div class="search-result">
-        <div class="search-result__hit-num"></div>
-        <div id="search-result__list"></div>
-      </div>
+<!DOCTYPE html> <html lang="ja">
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap</title>
+    <!-- Bootstrap -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+ </head>
+ 
+ <body>
+    <div class="container">
+     <div class="row">
+        
+        <!-- 4列をサイドメニューに割り当て -->
+        <div class="col-xs-4">
+         <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="#">ダッシュボード</a></li>
+            <li><a href="#">サーバー１</a></li>
+            <li><a href="#">サーバー２</a></li>
+            <li><a href="#">サーバー３</a></li>
+         </ul>
+        </div>
+        
+        
+        <!-- 残り8列はコンテンツ表示部分として使う -->
+        <div class="col-xs-8">
+         <div class="panel panel-info">
+            <div class="panel-heading">
+             <div class="panel-title">sv-01</div>
+            </div>
+            <div class="panel-body">サーバー１のステータスOK</div>
+         </div>
+         
+         <div class="panel panel-info">
+            <div class="panel-heading">
+             <div class="panel-title">sv-02</div>
+            </div>
+            <div class="panel-body">サーバー２のステータスOK</div>
+         </div>
+         
+         <div class="panel panel-info">
+            <div class="panel-heading">
+             <div class="panel-title">sv-03</div>
+            </div>
+            <div class="panel-body">サーバー３のステータスOK</div>
+         </div>
+        </div>
+     </div>
     </div>
-
-    <ul class="target-area">
-      <li>りんご120円</li>
-      <li>ばなな100円</li>
-      <li>みかん150円</li>
-      <li>いちご220円</li>
-      <li>すいか500円</li>
-    </ul>
-  </div><!-- /.wrapper -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-</body>
-  
-  
-
-    <script  src="js/index.js"></script>
-
-
-
-
-</body>
-
-<SCRIPT language="JavaScript">
-function popup_modeless(url){
-	var newWin = window.open(
-		url,    //移動先
-		"pop",  //ターゲット名（aタグのtargetと同様）
-		"width=800, height=480"
-	);
-	newWin.focus();
-}
-</SCRIPT>
-
-<INPUT TYPE="button" VALUE="モードレス" onClick="popup_modeless('dialog_target.html')">
-
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ </body>
 </html>
