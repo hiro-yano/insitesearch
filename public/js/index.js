@@ -41,19 +41,20 @@ $(function () {
 　//$("#list_dashboard").load("dashboard.html #target-area-list li");
   
   var parameter = getParameter();
-  var totalCount = 0;
+  var totalCount = 0, strCount;
 
   var pageList = ['dashboard', 'orders', 'products', 'customers'];
 　var i;
   if(parameter != ''){
     for(i = 0; i < pageList.length; ++i){
-      totalCount += load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter);  
+      strCount = load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter); 
+      totalCount += strCount;
     }
   }
 
   var e = document.getElementById('search-result');
   var elemLi = document.createElement('h5');    //  要素を生成
-  elemLi.textContent =  'Word:' + parameter + '   ' + totalCount + ' results';//  文字列設定
+  elemLi.textContent =  'Word:' + parameter + '&nbsp;&nbsp;' + totalCount + ' results';//  文字列設定
   e.appendChild(elemLi);                        //  要素を追加
   
 });
