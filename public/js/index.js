@@ -37,4 +37,38 @@ $(function () {
 
   // searchWordの実行
   $('#search-text').on('input', searchWord);
+
+  var parameter = getParameter();
+  if(parameter != ''){
+    var e = document.getElementById('list');
+    var elemLi = document.createElement('li');    //  要素を生成
+    elemLi.textContent =  parameter               //  文字列設定
+    e.appendChild(elemLi);                        //  要素を追加
+  }
+  
 });
+
+
+function enter(code)
+{
+  //エンターキー押下なら
+  if(13 === code)
+  {
+    var para = '?' + document.getElementById('search-text').value;
+    window.location.href = 'searchresult.html' + para; // 通常の遷移
+  }
+}
+
+
+function getParameter(){
+  // URLのパラメータを取得
+  var urlParam = location.search.substring(1);
+ 
+  // URLにパラメータが存在する場合
+  if(urlParam) {
+    return decodeURI(urlParam)
+  }else{
+    return ''
+  }
+ 
+}

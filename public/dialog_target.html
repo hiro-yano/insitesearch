@@ -1,55 +1,115 @@
-<!DOCTYPE html> <html lang="ja">
- <head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap</title>
-    <!-- Bootstrap -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
- </head>
- 
- <body>
-    <div class="container">
-     <div class="row">
-        
-        <!-- 4列をサイドメニューに割り当て -->
-        <div class="col-xs-4">
-         <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="#">ダッシュボード</a></li>
-            <li><a href="#">サーバー１</a></li>
-            <li><a href="#">サーバー２</a></li>
-            <li><a href="#">サーバー３</a></li>
-         </ul>
-        </div>
-        
-        
-        <!-- 残り8列はコンテンツ表示部分として使う -->
-        <div class="col-xs-8">
-         <div class="panel panel-info">
-            <div class="panel-heading">
-             <div class="panel-title">sv-01</div>
-            </div>
-            <div class="panel-body">サーバー１のステータスOK</div>
-         </div>
-         
-         <div class="panel panel-info">
-            <div class="panel-heading">
-             <div class="panel-title">sv-02</div>
-            </div>
-            <div class="panel-body">サーバー２のステータスOK</div>
-         </div>
-         
-         <div class="panel panel-info">
-            <div class="panel-heading">
-             <div class="panel-title">sv-03</div>
-            </div>
-            <div class="panel-body">サーバー３のステータスOK</div>
-         </div>
-        </div>
-     </div>
-    </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <title>dialog</title>
+  </head>
+  <body>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
- </body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+
+    <div class="row">
+  <div class="col-3">
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+      <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+      <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+        <h1>Hello, world1</h1>
+
+      </div>
+      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+        <h1>Hello, world2</h1>
+      </div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+        <h1>Hello, world3</h1>
+      </div>
+      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+        <h1>Hello, world4</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav flex-column">
+  <a class="nav-link active" href="#">アクティブ</a>
+  <a class="nav-link" href="#">リンク1</a>
+  <a class="nav-link" href="#">リンク2</a>
+  <a class="nav-link disabled" href="#">無効</a>
+</nav>
+
+  <div id="content" class="container-fluid">
+    <div class="row flex-xl-nowrap">
+      <div id="sidemenu" class="col-12 col-md-3 col-xl-2 order-xl-1 align-self-start">
+        <ul>
+          <li><a href="http://cccabinet.jpn.org/bootstrap4/components">コンポーネント</a>
+            <ul>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/alerts">アラート</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/badges">バッジ</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/breadcrumb">パンくずリスト</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/buttons">ボタン</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/button-group">ボタングループ</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/card">カード</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/carousel">カルーセル</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/collapse">折り畳み</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/dropdowns">ドロップダウン</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/forms">フォーム</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/input-group">インプットグループ</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/jumbotron">ジャンボトロン</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/list-group">リストグループ</a></li>
+              <li><span class="bg-light py-1 font-weight-bold d-block">モーダル</span>              </li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/navs">ナビゲーション</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/navbar">ナビゲーションバー</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/pagination">ページ送り</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/popovers">ポップオーバー</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/progress">プログレスバー</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/scrollspy">スクロールスパイ</a></li>
+              <li><a href="http://cccabinet.jpn.org/bootstrap4/components/tooltips">ツールチップ</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /#sidemenu -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  </body>
 </html>
+
