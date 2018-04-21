@@ -87,7 +87,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
               $("#" + insert_info_arr[0]).append(elemLi);//insert
 
         }
-
+        alert(str_count);
         countResultsFn(str_count);
 
     }, function(jqXHR, textStatus) {
