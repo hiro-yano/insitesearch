@@ -110,7 +110,7 @@ var strCount = function(searchStr, str) {
     alert("search:" + str + ",position:" + pos)
     while (pos !== -1) {
         count++;
-        pos = str.indexOf(searchStr, pos + count);
+        pos = str.indexOf(searchStr, pos + 1);
         alert("search:" + str + ",position:" + pos)
     }
  
