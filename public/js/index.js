@@ -50,6 +50,7 @@ $(function () {
       load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter, 
         function(strCount){
             totalCount += strCount;
+            alert('total:'+totalCount)
         }); 
     }
   }
