@@ -54,7 +54,7 @@ $(function () {
 
   var e = document.getElementById('search-result');
   var elemLi = document.createElement('h5');    //  要素を生成
-  elemLi.textContent =  'Word:' + parameter + '&nbsp;&nbsp;' + totalCount + ' results';//  文字列設定
+  elemLi.textContent =  'Word:' + parameter + ' ' + totalCount + ' results';//  文字列設定
   e.appendChild(elemLi);                        //  要素を追加
   
 });
@@ -77,7 +77,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
 
         var i;
         var listById = out_html.find("#" + insert_info_arr[1])[0].innerHTML;
-        str_count = strCount(parameter,listById)
+        var str_count = strCount(parameter,listById)
 
         if ( str_count != 0) {
               var elemLi = document.createElement('ul');    //  要素を生成
