@@ -50,15 +50,14 @@ $(function () {
       load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter, 
         function(strCount){
             totalCount += strCount;
-            alert('total:'+totalCount)
+            var e = document.getElementById('search-word');
+            elemLi.textContent =  totalCount;//  文字列設定
         }); 
     }
   }
 
-  var e = document.getElementById('search-result');
-  var elemLi = document.createElement('h5');    //  要素を生成
-  elemLi.textContent =  'Word:' + parameter + ' ' + totalCount + ' results';//  文字列設定
-  e.appendChild(elemLi);                        //  要素を追加
+  var e = document.getElementById('search-word');
+  elemLi.textContent =  parameter;//  文字列設定
   
 });
 
@@ -88,7 +87,6 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
               $("#" + insert_info_arr[0]).append(elemLi);//insert
 
         }
-        alert(str_count);
         countResultsFn(str_count);
 
     }, function(jqXHR, textStatus) {
