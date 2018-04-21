@@ -53,7 +53,8 @@ $(function () {
   
   $.get("dashboard.html", function(html_string)
    {
-      alert(html_string); 
+      var out_html = $($.parseHTML(data));//parse
+      alert(out_html.filter('#target-area-list')[0].innerHTML); 
    },'html');    // this is the change now its working
 
   
