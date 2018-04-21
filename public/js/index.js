@@ -41,25 +41,19 @@ $(function () {
 　//$("#list_dashboard").load("dashboard.html #target-area-list li");
   
   var parameter = getParameter();
-  var strCount = 0;
-  var totalStrCount = 0;
 
   var pageList = ['dashboard', 'orders', 'products', 'customers'];
 　var i;
   if(parameter != ''){
     for(i = 0; i < pageList.length; ++i){
-      strCount = load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter);
-      alert(strCount);
-      totalStrCount += strCount;    
+      strCount = load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter);   
     }
   }
 
-  if(parameter != ''){
-    var e = document.getElementById('search-result');
-    var elemLi = document.createElement('h5');    //  要素を生成
-    elemLi.textContent =  'Search Word:' + parameter +  ',Search Result:' + totalStrCount;//  文字列設定
-    e.appendChild(elemLi);                        //  要素を追加
-  }
+  var e = document.getElementById('search-word');
+  var elemLi = document.createElement('h5');    //  要素を生成
+  elemLi.textContent =  'Search Word:' + parameter;//  文字列設定
+  e.appendChild(elemLi);                        //  要素を追加
   
 });
 
@@ -72,9 +66,8 @@ $(function () {
  * @return none.
  */
 var load_html_and_insert = function (html_url, insert_info_arr, parameter){
-    var str_count = 0;
 
-    return $.ajax(html_url, {
+    $.ajax(html_url, {
         timeout : 1000,
         datatype: 'html'
     }).then(function(data){
@@ -88,9 +81,14 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
               var elemLi = document.createElement('ul');    //  要素を生成
               elemLi.innerHTML =  listById                //  文字列設定
               $("#" + insert_info_arr[0]).append(elemLi);//insert
+
+              var e = document.getElementById('search-results-count');
+              var evalue = Number(e.textContent) + str_count;
+              var elemLi = document.createElement('h5');    //  要素を生成
+              elemLi.textContent =  evalue ;    //  文字列設定
+              e.empry().appendChild(elemLi);    //  要素を追加
         }
 
-        return str_count
     }, function(jqXHR, textStatus) {
         if(textStatus!=="success") {
             var txt = "<p>textStatus:"+ textStatus + "</p>" +
@@ -99,7 +97,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
                 "</div>";
             $("#" + insert_info_arr[0]).append(txt);
         }
-        return str_count
+        
     });
 
 };
