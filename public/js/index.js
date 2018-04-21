@@ -41,14 +41,16 @@ $(function () {
 　//$("#list_dashboard").load("dashboard.html #target-area-list li");
   
   var parameter = getParameter();
-  var totalCount = 0, strCount;
+  var totalCount = 0;
 
   var pageList = ['dashboard', 'orders', 'products', 'customers'];
 　var i;
   if(parameter != ''){
     for(i = 0; i < pageList.length; ++i){
-      strCount = load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter); 
-      totalCount += strCount;
+      load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter, 
+        countResultsFn(strCount){
+            totalCount += strCount;
+        }); 
     }
   }
 
@@ -67,7 +69,7 @@ $(function () {
  *
  * @return none.
  */
-var load_html_and_insert = function (html_url, insert_info_arr, parameter){
+var load_html_and_insert = function (html_url, insert_info_arr, parameter, countResultsFn){
 
     $.ajax(html_url, {
         timeout : 1000,
@@ -86,7 +88,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
 
         }
 
-        return str_count;
+        countResultsFn(str_count);
 
     }, function(jqXHR, textStatus) {
         
@@ -95,8 +97,6 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
                 "<p>responseText : </p><div>" + jqXHR.responseText +
                 "</div>";
         $("#" + insert_info_arr[0]).append(txt);
-        
-        return 0;
         
     });
 
