@@ -54,8 +54,6 @@ $(function () {
     }
   }
 
-  alert(totalStrCount);
-
   if(parameter != ''){
     var e = document.getElementById('search-result');
     var elemLi = document.createElement('h5');    //  要素を生成
@@ -79,7 +77,9 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
     $.ajax(html_url, {
         timeout : 1000,
         datatype: 'html'
-    }).then(function(data){
+    }).then(
+
+      str_count = function(data){
         var out_html = $($.parseHTML(data));//parse
 
         var i;
@@ -90,7 +90,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
               var elemLi = document.createElement('ul');    //  要素を生成
               elemLi.innerHTML =  listById                //  文字列設定
               $("#" + insert_info_arr[0]).append(elemLi);//insert
-              return false;
+              return str_count;
         }
     }, function(jqXHR, textStatus) {
         if(textStatus!=="success") {
