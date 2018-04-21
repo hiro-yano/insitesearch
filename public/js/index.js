@@ -41,11 +41,6 @@ $(function () {
   var e = document.getElementById('list');
 
 　$("#list_dashboard").load("dashboard.html #target-area-list li");
-
-  $.get("dashboard.html #target-area-list li", function( data ) {
-    e.appendChild(data);                        //  要素を追加
-    alert(data);
-  });
   
   var parameter = getParameter();
   if(parameter != ''){
@@ -54,6 +49,26 @@ $(function () {
     elemLi.textContent =  parameter               //  文字列設定
     e.appendChild(elemLi);                        //  要素を追加
   }
+
+  $(function() {
+    $.ajax('external.html', {
+        timeout : 1000, // 1000 ms
+        datatype:'html'
+    }).then(function(data){
+        var out_html = $($.parseHTML(data));//parse
+        e.appendChild(out_html.filter('#target-area-list')[0].innerHTML);//insert
+
+    },function(jqXHR, textStatus) {
+        if(textStatus!=="success") {
+            var txt = "<p>textStatus:"+ textStatus + "</p>" +
+                "<p>status:"+ jqXHR.status + "</p>" +
+                "<p>responseText : </p><div>" + jqXHR.responseText +
+                "</div>";
+            e.appendChild(txt);//insert
+        }
+    });
+
+  });
   
   
 });
