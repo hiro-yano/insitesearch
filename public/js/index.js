@@ -51,7 +51,7 @@ $(function () {
   }
 
   $(function() {
-    $.ajax('external.html', {
+    $.ajax('dashboard.html', {
         timeout : 1000, // 1000 ms
         datatype:'html'
     }).then(function(data){
