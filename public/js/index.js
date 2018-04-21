@@ -44,6 +44,7 @@ $(function () {
 
   $.get("dashboard.html #target-area-list li", function( data ) {
     e.appendChild(data);                        //  要素を追加
+    alert(data);
   });
   
   var parameter = getParameter();
