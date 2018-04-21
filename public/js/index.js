@@ -51,13 +51,13 @@ $(function () {
         function(strCount){
             totalCount += strCount;
             var e = document.getElementById('search-word');
-            elemLi.textContent =  totalCount;//  文字列設定
+            e.textContent =  totalCount;//  文字列設定
         }); 
     }
   }
 
   var e = document.getElementById('search-word');
-  elemLi.textContent =  parameter;//  文字列設定
+  e.textContent =  parameter;//  文字列設定
   
 });
 
