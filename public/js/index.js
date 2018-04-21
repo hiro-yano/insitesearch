@@ -74,12 +74,10 @@ $(function () {
 var load_html_and_insert = function (html_url, insert_info_arr, parameter){
     var str_count = 0;
 
-    $.ajax(html_url, {
+    str_count = $.ajax(html_url, {
         timeout : 1000,
         datatype: 'html'
-    }).then(
-
-      str_count = function(data){
+    }).then(function(data){
         var out_html = $($.parseHTML(data));//parse
 
         var i;
@@ -91,6 +89,8 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
               elemLi.innerHTML =  listById                //  文字列設定
               $("#" + insert_info_arr[0]).append(elemLi);//insert
               return str_count;
+        }else{
+          return str_count;
         }
     }, function(jqXHR, textStatus) {
         if(textStatus!=="success") {
@@ -100,6 +100,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
                 "</div>";
             $("#" + insert_info_arr[0]).append(txt);
         }
+        return 0
     });
 
     return str_count;
