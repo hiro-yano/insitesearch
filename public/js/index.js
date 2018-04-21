@@ -41,13 +41,15 @@ $(function () {
 　//$("#list_dashboard").load("dashboard.html #target-area-list li");
   
   var parameter = getParameter();
+  var strCount = 0;
   var totalStrCount = 0;
 
   var pageList = ['dashboard', 'orders', 'products', 'customers'];
 　var i;
   if(parameter != ''){
     for(i = 0; i < pageList.length; ++i){
-      totalStrCount += load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter);
+      strCount = load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter);
+      totalStrCount += strCount;    
     }
   }
 
