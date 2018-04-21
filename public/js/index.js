@@ -75,7 +75,9 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
         var listById = out_html.find("#" + insert_info_arr[1])[0].innerHTML;
 
         if ( listById.indexOf(parameter) != -1) {
-              $("#" + insert_info_arr[0]).append(listById);//insert
+              var elemLi = document.createElement('ul');    //  要素を生成
+              elemLi.textContent =  listById                //  文字列設定
+              $("#" + insert_info_arr[0]).append(elemLi);//insert
         }
     }, function(jqXHR, textStatus) {
         if(textStatus!=="success") {
