@@ -69,6 +69,8 @@ $(function () {
  * @return none.
  */
 var load_html_and_insert = function (html_url, insert_info_arr, parameter){
+    var str_count = 0;
+
     $.ajax(html_url, {
         timeout : 1000,
         datatype: 'html'
@@ -77,15 +79,13 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
 
         var i;
         var listById = out_html.find("#" + insert_info_arr[1])[0].innerHTML;
-        var str_count = strCount(parameter,listById)
+        str_count = strCount(parameter,listById)
 
         if ( str_count != 0) {
               var elemLi = document.createElement('ul');    //  要素を生成
               elemLi.innerHTML =  listById                //  文字列設定
               $("#" + insert_info_arr[0]).append(elemLi);//insert
-              return str_count;
-        }else{
-          return 0;
+              
         }
     }, function(jqXHR, textStatus) {
         if(textStatus!=="success") {
@@ -95,8 +95,9 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
                 "</div>";
             $("#" + insert_info_arr[0]).append(txt);
         }
-        return 0;
     });
+
+    return str_count;
 };
 
 
