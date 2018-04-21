@@ -56,7 +56,7 @@ $(function () {
       //var out_html = $.parseHTML(html_string);//parse
       var out_html = $(html_string);//parse
       //alert(out_html);
-      alert(out_html.filter('#target-area-list'));
+      alert(out_html.filter('#target-area-list').text());
       //$("#list").append($(html_string).find('#target-area-list').text())
       $('#list').append(out_html.filter('#target-area-list').text());//insert
    },'html');    // this is the change now its working
