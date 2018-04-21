@@ -86,7 +86,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
               var evalue = Number(e.textContent) + str_count;
               var elemLi = document.createElement('h5');    //  要素を生成
               elemLi.textContent =  evalue ;    //  文字列設定
-              e.empry().appendChild(elemLi);    //  要素を追加
+              e.empty().appendChild(elemLi);    //  要素を追加
         }
 
     }, function(jqXHR, textStatus) {
