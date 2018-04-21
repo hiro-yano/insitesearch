@@ -49,7 +49,7 @@ $(function () {
   }
 
   var pageList = ['dashboard', 'orders', 'products', 'customers'];
-
+　var i;
   for(i = 0; i < pageList.length; ++i){
     load_html_and_insert(pageList[i] + '.html', [["list", "target-area-list"]], parameter);
   }
@@ -71,11 +71,9 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
     }).then(function(data){
         var out_html = $($.parseHTML(data));//parse
         var i;
-        for(i = 0; i < insert_info_arr.length; ++i){
-          var listById = out_html.find("#" + insert_info_arr[i][1])[0].innerHTML;
-          if ( listById.indexOf(parameter) != -1) {
-              $("#" + insert_info_arr[i][0]).append(listById);//insert
-          }
+        var listById = out_html.find("#" + insert_info_arr[0][1])[0].innerHTML;
+        if ( listById.indexOf(parameter) != -1) {
+              $("#" + insert_info_arr[0][0]).append(listById);//insert
         }
     }, function(jqXHR, textStatus) {
         if(textStatus!=="success") {
