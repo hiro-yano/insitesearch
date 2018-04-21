@@ -53,6 +53,8 @@ $(function () {
     }
   }
 
+  alert(totalStrCount);
+  
   if(parameter != ''){
     var e = document.getElementById('search-result');
     var elemLi = document.createElement('h5');    //  要素を生成
