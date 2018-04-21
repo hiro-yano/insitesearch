@@ -54,7 +54,7 @@ $(function () {
   $.get("dashboard.html", function(html_string)
    {
       var out_html = $($.parseHTML(html_string));//parse
-      alert($(data).find('#target-area-list').text()); 
+      alert($(html_string).find('#target-area-list').text()); 
    },'html');    // this is the change now its working
 
   
