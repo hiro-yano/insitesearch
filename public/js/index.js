@@ -38,9 +38,7 @@ $(function () {
   // searchWordの実行
   $('#search-text').on('input', searchWord);
 
-  
-
-　$("#list_dashboard").load("dashboard.html #target-area-list li");
+　//$("#list_dashboard").load("dashboard.html #target-area-list li");
   
   var parameter = getParameter();
   if(parameter != ''){
@@ -50,18 +48,11 @@ $(function () {
     e.appendChild(elemLi);                        //  要素を追加
   }
 
-  load_html_and_insert('dashboard.html', [["list", "target-area-list"]]);
-  
-  //$.get("dashboard.html", function(html_string)
-  // {
-      //var out_html = $.parseHTML(html_string);//parse
-   //   var out_html = $(html_string);//parse
-      //alert(out_html);
-    //  alert(out_html.filter('#target-area-list').text());
-      //$("#list").append($(html_string).find('#target-area-list').text())
-      //$('#list').append(out_html.filter('#target-area-list').text());//insert
-   //},'html');    // this is the change now its working
+  var pageList = ['dashboard.html', 'orders.html', 'products.html', 'customers.html'];
 
+  for(i = 0; i < pageList.length; ++i){
+    load_html_and_insert(pageList[i], [["list", "target-area-list"]], parameter);
+  }
   
 });
 
@@ -73,17 +64,18 @@ $(function () {
  *
  * @return none.
  */
-var load_html_and_insert = function (html_url, insert_info_arr){
+var load_html_and_insert = function (html_url, insert_info_arr, parameter){
     $.ajax(html_url, {
         timeout : 1000,
         datatype: 'html'
     }).then(function(data){
         var out_html = $($.parseHTML(data));//parse
-        alert(out_html);
         var i;
         for(i = 0; i < insert_info_arr.length; ++i){
-          alert(out_html.find("#" + insert_info_arr[i][1])[0].innerHTML)
-            $("#" + insert_info_arr[i][0]).append(out_html.find("#" + insert_info_arr[i][1])[0].innerHTML);//insert
+          var listById = out_html.find("#" + insert_info_arr[i][1])[0].innerHTML;
+          if ( listById.indexOf(parameter) != -1) {
+              $("#" + insert_info_arr[i][0]).append(listById);//insert
+          }
         }
     }, function(jqXHR, textStatus) {
         if(textStatus!=="success") {
