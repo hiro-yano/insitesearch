@@ -71,9 +71,9 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
     }).then(function(data){
         var out_html = $($.parseHTML(data));//parse
         var i;
-        var listById = out_html.find("#" + insert_info_arr[0][1])[0].innerHTML;
+        var listById = out_html.find("#" + insert_info_arr[1])[0].innerHTML;
         if ( listById.indexOf(parameter) != -1) {
-              $("#" + insert_info_arr[0][0]).append(listById);//insert
+              $("#" + insert_info_arr[0]).append(listById);//insert
         }
     }, function(jqXHR, textStatus) {
         if(textStatus!=="success") {
@@ -81,7 +81,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
                 "<p>status:"+ jqXHR.status + "</p>" +
                 "<p>responseText : </p><div>" + jqXHR.responseText +
                 "</div>";
-            $("#" + insert_info_arr[0][0]).append(txt);
+            $("#" + insert_info_arr[0]).append(txt);
         }
     });
 };
