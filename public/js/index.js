@@ -41,17 +41,21 @@ $(function () {
 　//$("#list_dashboard").load("dashboard.html #target-area-list li");
   
   var parameter = getParameter();
-  if(parameter != ''){
-    var e = document.getElementById('list');
-    var elemLi = document.createElement('li');    //  要素を生成
-    elemLi.textContent =  parameter               //  文字列設定
-    e.appendChild(elemLi);                        //  要素を追加
-  }
+  var totalStrCount = 0;
 
   var pageList = ['dashboard', 'orders', 'products', 'customers'];
 　var i;
-  for(i = 0; i < pageList.length; ++i){
-    load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter);
+  if(parameter != ''){
+    for(i = 0; i < pageList.length; ++i){
+      totalStrCount += load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter);
+    }
+  }
+
+  if(parameter != ''){
+    var e = document.getElementById('search-result');
+    var elemLi = document.createElement('h5');    //  要素を生成
+    elemLi.textContent =  'Search Word:' + parameter +  ',Search Result:' + totalStrCount//  文字列設定
+    e.appendChild(elemLi);                        //  要素を追加
   }
   
 });
@@ -73,12 +77,15 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
 
         var i;
         var listById = out_html.find("#" + insert_info_arr[1])[0].innerHTML;
+        var str_count = strCount(parameter,listById)
 
-        if ( listById.indexOf(parameter) != -1) {
+        if ( str_count != 0) {
               var elemLi = document.createElement('ul');    //  要素を生成
               elemLi.innerHTML =  listById                //  文字列設定
-              alert(elemLi);
               $("#" + insert_info_arr[0]).append(elemLi);//insert
+              return str_count;
+        }else{
+          return 0;
         }
     }, function(jqXHR, textStatus) {
         if(textStatus!=="success") {
@@ -88,7 +95,22 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
                 "</div>";
             $("#" + insert_info_arr[0]).append(txt);
         }
+        return 0;
     });
+};
+
+
+var strCount = function(searchStr, str) {
+    if (!searchStr || !str) return 0;
+ 
+    var count = 0, pos = str.indexOf(searchStr);
+ 
+    while (pos !== -1) {
+        count++;
+        pos = str.indexOf(searchStr, pos + count);
+    }
+ 
+    return count;
 };
 
 
