@@ -70,8 +70,10 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
         datatype: 'html'
     }).then(function(data){
         var out_html = $($.parseHTML(data));//parse
+
         var i;
         var listById = out_html.find("#" + insert_info_arr[1])[0].innerHTML;
+
         if ( listById.indexOf(parameter) != -1) {
               $("#" + insert_info_arr[0]).append(listById);//insert
         }
