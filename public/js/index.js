@@ -58,7 +58,7 @@ $(function () {
       //alert(out_html);
       alert(out_html.filter('#target-area-list'));
       //$("#list").append($(html_string).find('#target-area-list').text())
-      $('#list').append(out_html.filter('#target-area-list')[0].innerHTML);//insert
+      $('#list').append(out_html.filter('#target-area-list'));//insert
    },'html');    // this is the change now its working
 
   
