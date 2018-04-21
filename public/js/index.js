@@ -53,7 +53,7 @@ $(function () {
   
   $.get("dashboard.html", function(html_string)
    {
-      var out_html = $($.parseHTML(html_string));//parse
+      var out_html = $.parseHTML(html_string);//parse
       //alert($(html_string).find('#target-area-list').text()); 
       alert(out_html.filter('#target-area-list')[0].innerHTML);
       //$("#list").append($(html_string).find('#target-area-list').text())
