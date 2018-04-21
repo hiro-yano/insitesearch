@@ -51,7 +51,7 @@ $(function () {
   var pageList = ['dashboard', 'orders', 'products', 'customers'];
 　var i;
   for(i = 0; i < pageList.length; ++i){
-    load_html_and_insert(pageList[i] + '.html', [["list", "target-area-list"]], parameter);
+    load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter);
   }
   
 });
