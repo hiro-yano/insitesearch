@@ -76,7 +76,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
 
         if ( listById.indexOf(parameter) != -1) {
               var elemLi = document.createElement('ul');    //  要素を生成
-              elemLi.textContent =  listById                //  文字列設定
+              elemLi.innerHTML =  listById                //  文字列設定
               alert(elemLi);
               $("#" + insert_info_arr[0]).append(elemLi);//insert
         }
