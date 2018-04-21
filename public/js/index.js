@@ -67,6 +67,8 @@ $(function () {
                 "</div>";
             e.appendChild(txt);//insert
         }
+
+        alert(out_html.filter('#target-area-list')[0].innerHTML)
     });
 
   
