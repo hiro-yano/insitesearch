@@ -52,6 +52,7 @@ $(function () {
             totalCount += strCount;
             var e = document.getElementById('search-result-count');
             e.textContent =  totalCount;//  文字列設定
+            alert('total:'+ totalCount + ',str:' + strCount);
         }); 
     }
   }
