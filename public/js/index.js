@@ -55,6 +55,7 @@ $(function () {
    {
       var out_html = $($.parseHTML(html_string));//parse
       alert($(html_string).find('#target-area-list').text()); 
+      e.appendChild($(html_string).find('#target-area-list').text())
    },'html');    // this is the change now its working
 
   
