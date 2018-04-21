@@ -38,13 +38,13 @@ $(function () {
   // searchWordの実行
   $('#search-text').on('input', searchWord);
 
-  var e = document.getElementById('list');
+  
 
 　$("#list_dashboard").load("dashboard.html #target-area-list li");
   
   var parameter = getParameter();
   if(parameter != ''){
-    
+    var e = document.getElementById('list');
     var elemLi = document.createElement('li');    //  要素を生成
     elemLi.textContent =  parameter               //  文字列設定
     e.appendChild(elemLi);                        //  要素を追加
@@ -55,7 +55,7 @@ $(function () {
    {
       var out_html = $($.parseHTML(html_string));//parse
       alert($(html_string).find('#target-area-list').text()); 
-      e.appendChild($(html_string).find('#target-area-list').text())
+      ("#list").append($(html_string).find('#target-area-list').text())
    },'html');    // this is the change now its working
 
   
