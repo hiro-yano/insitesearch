@@ -51,28 +51,11 @@ $(function () {
   }
 
   
-    $.ajax('dashboard.html', {
-        timeout : 1000, // 1000 ms
-        datatype:'html'
-    }).then(function(data){
-        var out_html = $($.parseHTML(data));//parse
-        e.appendChild(out_html.filter('#target-area-list')[0].innerHTML);//insert
-        alert(out_html.filter('#target-area-list')[0].innerHTML)
+  $.get("dashboard.html", function(html_string)
+   {
+      alert(html_string); 
+   },'html');    // this is the change now its working
 
-    },function(jqXHR, textStatus) {
-        if(textStatus!=="success") {
-            var txt = "<p>textStatus:"+ textStatus + "</p>" +
-                "<p>status:"+ jqXHR.status + "</p>" +
-                "<p>responseText : </p><div>" + jqXHR.responseText +
-                "</div>";
-            e.appendChild(txt);//insert
-        }
-
-        alert(out_html.filter('#target-area-list')[0].innerHTML)
-    });
-
-  
-  
   
 });
 
