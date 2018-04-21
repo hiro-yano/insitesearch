@@ -50,13 +50,14 @@ $(function () {
     e.appendChild(elemLi);                        //  要素を追加
   }
 
-  $(function() {
+  
     $.ajax('dashboard.html', {
         timeout : 1000, // 1000 ms
         datatype:'html'
     }).then(function(data){
         var out_html = $($.parseHTML(data));//parse
         e.appendChild(out_html.filter('#target-area-list')[0].innerHTML);//insert
+        alert(out_html.filter('#target-area-list')[0].innerHTML)
 
     },function(jqXHR, textStatus) {
         if(textStatus!=="success") {
@@ -68,7 +69,7 @@ $(function () {
         }
     });
 
-  });
+  
   
   
 });
