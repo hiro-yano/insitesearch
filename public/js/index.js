@@ -41,18 +41,19 @@ $(function () {
 　//$("#list_dashboard").load("dashboard.html #target-area-list li");
   
   var parameter = getParameter();
+  var totalCount = 0;
 
   var pageList = ['dashboard', 'orders', 'products', 'customers'];
 　var i;
   if(parameter != ''){
     for(i = 0; i < pageList.length; ++i){
-      strCount = load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter);   
+      totalCount += load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter);  
     }
   }
 
-  var e = document.getElementById('search-word');
+  var e = document.getElementById('search-result');
   var elemLi = document.createElement('h5');    //  要素を生成
-  elemLi.textContent =  'Search Word:' + parameter;//  文字列設定
+  elemLi.textContent =  'Word:' + parameter + '   ' + totalCount + ' results';//  文字列設定
   e.appendChild(elemLi);                        //  要素を追加
   
 });
@@ -82,21 +83,19 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
               elemLi.innerHTML =  listById                //  文字列設定
               $("#" + insert_info_arr[0]).append(elemLi);//insert
 
-              var e = document.getElementById('search-results-count');
-              var evalue = Number(e.textContent) + str_count;
-              var elemLi = document.createElement('h5');    //  要素を生成
-              elemLi.textContent =  evalue ;    //  文字列設定
-              e.empty().appendChild(elemLi);    //  要素を追加
         }
 
+        return str_count;
+
     }, function(jqXHR, textStatus) {
-        if(textStatus!=="success") {
-            var txt = "<p>textStatus:"+ textStatus + "</p>" +
+        
+        var txt = "<p>textStatus:"+ textStatus + "</p>" +
                 "<p>status:"+ jqXHR.status + "</p>" +
                 "<p>responseText : </p><div>" + jqXHR.responseText +
                 "</div>";
-            $("#" + insert_info_arr[0]).append(txt);
-        }
+        $("#" + insert_info_arr[0]).append(txt);
+        
+        return 0;
         
     });
 
