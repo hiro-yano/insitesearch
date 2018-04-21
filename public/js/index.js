@@ -90,7 +90,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
               var elemLi = document.createElement('ul');    //  要素を生成
               elemLi.innerHTML =  listById                //  文字列設定
               $("#" + insert_info_arr[0]).append(elemLi);//insert
-              
+              return str_count;
         }
     }, function(jqXHR, textStatus) {
         if(textStatus!=="success") {
