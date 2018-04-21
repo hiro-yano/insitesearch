@@ -38,6 +38,8 @@ $(function () {
   // searchWordの実行
   $('#search-text').on('input', searchWord);
 
+　$("#list").load("dashboard.html #target-area-list li");
+  
   var parameter = getParameter();
   if(parameter != ''){
     var e = document.getElementById('list');
@@ -45,8 +47,6 @@ $(function () {
     elemLi.textContent =  parameter               //  文字列設定
     e.appendChild(elemLi);                        //  要素を追加
   }
-
-  $("#list").load("dashboard.html #target-area-list li");
   
   
 });
