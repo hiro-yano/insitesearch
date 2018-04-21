@@ -50,7 +50,7 @@ $(function () {
       load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter, 
         function(strCount){
             totalCount += strCount;
-            var e = document.getElementById('search-word');
+            var e = document.getElementById('search-result-count');
             e.textContent =  totalCount;//  文字列設定
         }); 
     }
