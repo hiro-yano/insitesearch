@@ -48,10 +48,10 @@ $(function () {
     e.appendChild(elemLi);                        //  要素を追加
   }
 
-  var pageList = ['dashboard.html', 'orders.html', 'products.html', 'customers.html'];
+  var pageList = ['dashboard', 'orders', 'products', 'customers'];
 
   for(i = 0; i < pageList.length; ++i){
-    load_html_and_insert(pageList[i], [["list", "target-area-list"]], parameter);
+    load_html_and_insert(pageList[i] + '.html', [["list", "target-area-list"]], parameter);
   }
   
 });
@@ -83,8 +83,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
                 "<p>status:"+ jqXHR.status + "</p>" +
                 "<p>responseText : </p><div>" + jqXHR.responseText +
                 "</div>";
-            $('#page').html(txt);
-            $('#page2').html(txt);
+            $("#" + insert_info_arr[0][0]).append(txt);
         }
     });
 };
