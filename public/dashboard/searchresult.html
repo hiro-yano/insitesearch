@@ -14,6 +14,9 @@
 
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    
   </head>
 
   <body>
@@ -33,25 +36,25 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link" href="dashboard.html">
                   <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
+                  Dashboard
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="orders.html">
                   <span data-feather="file"></span>
                   Orders
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="products.html">
                   <span data-feather="shopping-cart"></span>
                   Products
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="customers.html">
                   <span data-feather="users"></span>
                   Customers
                 </a>
@@ -109,9 +112,6 @@
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
 
             <ul id="list">
-              <li>One</li>
-              <li>Two</li>
-              <li>Three</li>
             </ul>
 
     </main>
@@ -126,12 +126,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script  src="../js/index.js"></script>
+    
+    <script>
+      $("#list").load("dashboard.html #target-area-list li");
+    </script>
 
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
 
-    
-    
 
   </body>
 </html>

@@ -45,6 +45,9 @@ $(function () {
     elemLi.textContent =  parameter               //  文字列設定
     e.appendChild(elemLi);                        //  要素を追加
   }
+
+  $("#list").load("dashboard.html #target-area-list li");
+  
   
 });
 
