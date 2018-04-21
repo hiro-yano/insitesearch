@@ -49,12 +49,13 @@ $(function () {
   if(parameter != ''){
     for(i = 0; i < pageList.length; ++i){
       strCount = load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter);
+      alert(strCount);
       totalStrCount += strCount;    
     }
   }
 
   alert(totalStrCount);
-  
+
   if(parameter != ''){
     var e = document.getElementById('search-result');
     var elemLi = document.createElement('h5');    //  要素を生成
