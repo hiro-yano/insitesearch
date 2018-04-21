@@ -38,7 +38,7 @@ $(function () {
   // searchWordの実行
   $('#search-text').on('input', searchWord);
 
-　$("#list").load("dashboard.html #target-area-list li");
+　$("#list_dashboard").load("dashboard.html #target-area-list li");
   
   var parameter = getParameter();
   if(parameter != ''){
