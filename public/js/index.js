@@ -82,6 +82,7 @@ var load_html_and_insert = function (html_url, insert_info_arr){
         alert(out_html);
         var i;
         for(i = 0; i < insert_info_arr.length; ++i){
+            alert(out_html.filter("#" + insert_info_arr[i][0])[0].innerHTML);
             $("#" + insert_info_arr[i][1]).empty().append(out_html.filter("#" + insert_info_arr[i][0])[0].innerHTML);//insert
         }
     }, function(jqXHR, textStatus) {
