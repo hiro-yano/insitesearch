@@ -74,7 +74,7 @@ $(function () {
 var load_html_and_insert = function (html_url, insert_info_arr, parameter){
     var str_count = 0;
 
-    str_count = $.ajax(html_url, {
+    return $.ajax(html_url, {
         timeout : 1000,
         datatype: 'html'
     }).then(function(data){
@@ -88,10 +88,9 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
               var elemLi = document.createElement('ul');    //  要素を生成
               elemLi.innerHTML =  listById                //  文字列設定
               $("#" + insert_info_arr[0]).append(elemLi);//insert
-              return str_count;
-        }else{
-          return str_count;
         }
+
+        return str_count
     }, function(jqXHR, textStatus) {
         if(textStatus!=="success") {
             var txt = "<p>textStatus:"+ textStatus + "</p>" +
@@ -100,10 +99,9 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter){
                 "</div>";
             $("#" + insert_info_arr[0]).append(txt);
         }
-        return 0
+        return str_count
     });
 
-    return str_count;
 };
 
 
