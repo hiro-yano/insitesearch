@@ -54,7 +54,7 @@ $(function () {
   if(parameter != ''){
     var e = document.getElementById('search-result');
     var elemLi = document.createElement('h5');    //  要素を生成
-    elemLi.textContent =  'Search Word:' + parameter +  ',Search Result:' + totalStrCount//  文字列設定
+    elemLi.textContent =  'Search Word:' + parameter +  ',Search Result:' + totalStrCount;//  文字列設定
     e.appendChild(elemLi);                        //  要素を追加
   }
   
