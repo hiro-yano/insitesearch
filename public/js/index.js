@@ -38,11 +38,17 @@ $(function () {
   // searchWordの実行
   $('#search-text').on('input', searchWord);
 
+  var e = document.getElementById('list');
+
 　$("#list_dashboard").load("dashboard.html #target-area-list li");
+
+  $.get("dashboard.html #target-area-list li", function( data ) {
+    e.appendChild(data);                        //  要素を追加
+  });
   
   var parameter = getParameter();
   if(parameter != ''){
-    var e = document.getElementById('list');
+    
     var elemLi = document.createElement('li');    //  要素を生成
     elemLi.textContent =  parameter               //  文字列設定
     e.appendChild(elemLi);                        //  要素を追加
