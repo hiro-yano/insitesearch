@@ -51,14 +51,14 @@ $(function () {
         function(strCount){
             totalCount += strCount;
             var e = document.getElementById('search-result-count');
-            e.textContent =  totalCount;//  文字列設定
+            e.textContent =  totalCount + ' results';//  文字列設定
             alert('total:'+ totalCount + ',str:' + strCount);
         }); 
     }
   }
 
   var e = document.getElementById('search-word');
-  e.textContent =  parameter;//  文字列設定
+  e.textContent =  'Word: ' + parameter;//  文字列設定
   
 });
 
