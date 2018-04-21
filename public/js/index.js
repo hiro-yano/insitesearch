@@ -78,8 +78,8 @@ var load_html_and_insert = function (html_url, insert_info_arr){
         timeout : 1000,
         datatype: 'html'
     }).then(function(data){
-        var out_html = $.parseHTML(data);//parse1
-        alert(data);
+        var out_html = $(data);//parse1
+        alert(out_html);
         var i;
         for(i = 0; i < insert_info_arr.length; ++i){
             alert(out_html.filter("#" + insert_info_arr[i][0])[0].innerHTML);
