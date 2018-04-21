@@ -82,8 +82,8 @@ var load_html_and_insert = function (html_url, insert_info_arr){
         alert(out_html);
         var i;
         for(i = 0; i < insert_info_arr.length; ++i){
-            alert(out_html.filter("#" + insert_info_arr[i][0])[0].innerHTML);
-            $("#" + insert_info_arr[i][1]).empty().append(out_html.filter("#" + insert_info_arr[i][0])[0].innerHTML);//insert
+            alert(out_html.find("#" + insert_info_arr[i][1]));
+            $("#" + insert_info_arr[i][0]).empty().append(out_html.filter("#" + insert_info_arr[i][1])[0].innerHTML);//insert
         }
     }, function(jqXHR, textStatus) {
         if(textStatus!=="success") {
