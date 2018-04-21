@@ -57,8 +57,10 @@ $(function () {
     }
   }
 
-  var e = document.getElementById('search-word');
-  e.textContent =  'Word: ' + parameter;//  文字列設定
+  if(parameter != ''){
+    var e = document.getElementById('search-word');
+    e.textContent =  'Word: ' + parameter;//  文字列設定
+  }
   
 });
 
