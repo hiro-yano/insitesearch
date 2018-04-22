@@ -60,13 +60,11 @@ var highLightAllChildsTexts = function(dom,parameter){
     
     if(dom.hasChildNodes()){
       var child = dom.childNodes;
-      var tmpChild;
       var i;
 
       for(i = 0; i< child.length; i++){
         alert("child[" + i + "]:" + child[i].nodeValue);
-        tmpChild = highLightAllChildsTexts(child[i],parameter);
-        dom.appendChild(tmpChild);
+        child[i] = highLightAllChildsTexts(child[i],parameter);
       }
     }
 
