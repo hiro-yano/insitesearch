@@ -140,11 +140,12 @@ var getAllChildsTexts = function(child,createResult){
 
     var i;
     for(i = 0; i< child.length; i++){
-      createResult(child[i].textContent);
-      alert(child[i].textContent);
-
+      
       if (child[i].hasChildNodes()) {
         getAllChildsTexts(child[i].childNodes,createResult);
+      }else{
+        createResult(child[i].textContent);
+        alert(child[i].textContent);
       }
     }
 }
