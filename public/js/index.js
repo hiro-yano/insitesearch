@@ -95,18 +95,16 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
 
         alert(listById);
         
-
         var str_count = 0;
         str_count += strCount(parameter,listById);
         str_count += strCount(parameter,title);
-        
 
         if ( str_count != 0) {
 
-              var ahref = '<a href="' + html_url + '">'+ title +'</a><br>';
+              var ahref = '<a href="' + html_url + '">'+ doHighLight(parameter,title) +'</a><br>';
 
-              $("#" + insert_info_arr[0]).append(ahref);
-              $("#" + insert_info_arr[0]).append(listById_innerHTML);
+              $("#" + insert_info_arr[0]).append(doHighLight(parameter,ahref));
+              $("#" + insert_info_arr[0]).append(doHighLight(parameter,listById_innerHTML));
 
         }
         countResultsFn(str_count);
@@ -127,14 +125,41 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
 var strCount = function(searchStr, str) {
     if (!searchStr || !str) return 0;
  
-    var count = 0, pos = str.indexOf(searchStr);
+    var lowerSearchStr = searchStr.toLowerCase();
+    var lowerStr = str.toLowerCase();
+    var count = 0, pos = lowerStr.indexOf(lowerSearchStr);
     
     while (pos !== -1) {
         count++;
-        pos = str.indexOf(searchStr, pos + 1);
+
+        pos = lowerStr.indexOf(lowerSearchStr, pos + 1);    
     }
  
     return count;
+};
+
+var doHighLight = function(searchStr, str) {
+    if (!searchStr || !str) return 0;
+ 
+    var lowerSearchStr = searchStr.toLowerCase();
+    var lowerStr = str.toLowerCase();
+    var pos = lowerStr.indexOf(lowerSearchStr);
+    var highLitedStr = str;
+    let spanHead = '<span class="highlight">';
+    let spanTail = '</span>';
+    let spanLen = spanHead.length + spanTail.length;
+    let searchStrLen = searchStr.length;
+    
+    while (pos !== -1) {
+
+        highLitedStr = [highLitedStr.slice(0, pos), spanHead , 
+                        highLitedStr.slice(pos, pos + searchStrLen), 
+                        spanTail,highLitedStr.slice(pos + searchStrLen) ].join('');
+
+        pos = highLitedStr.toLowerCase().indexOf(lowerSearchStr, pos + spanLen + 1);    
+    }
+ 
+    return highLitedStr;
 };
 
 var getAllChildsTexts = function(child,createResult){
