@@ -103,11 +103,12 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
 
               var highLitedAhref = '<a href="' + html_url + '">'+ doHighLight(parameter,title) +'</a><br>';
 
-              $("#" + insert_info_arr[0]).append('<div class="card w-75"><div class="card-body"><h5 class="card-title">');
-              $("#" + insert_info_arr[0]).append(highLitedAhref);
-              $("#" + insert_info_arr[0]).append('</h5><p class="card-text">');
-              $("#" + insert_info_arr[0]).append(doHighLight(parameter,listById));
-              $("#" + insert_info_arr[0]).append("</p></div></div>");
+              $("#" + insert_info_arr[0]).append('<div class="card w-75">');
+              $("#" + insert_info_arr[0]).append('<div class="card-body">');
+              $("#" + insert_info_arr[0]).append('<h5 class="card-title">' + highLitedAhref + '</h5>');
+              $("#" + insert_info_arr[0]).append('<p class="card-text">' + doHighLight(parameter,listById) + '</p>');
+              $("#" + insert_info_arr[0]).append("</div>");
+              $("#" + insert_info_arr[0]).append("</div>");
 
         }
         countResultsFn(str_count);
