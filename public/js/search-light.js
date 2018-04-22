@@ -48,12 +48,12 @@ var doHighLight = function(searchStr, str) {
 var highLightAllChildsTexts = function(dom,parameter){
     if(!dom || !parameter) return;
 
-    var resultDom = dom;
-    resultDom.childNodes = null;
+    //var resultDom = dom;
+    //resultDom.childNodes = null;
 
     if(dom.nodeValue!=''|dom.nodeValue!='null'){
-      resultDom.nodeValue = doHighLight(parameter, dom.nodeValue);
-      alert(resultDom.nodeValue);
+      dom.nodeValue = doHighLight(parameter, dom.nodeValue);
+      alert(dom.nodeValue);
     }
     
     if(dom.hasChildNodes()){
@@ -62,7 +62,7 @@ var highLightAllChildsTexts = function(dom,parameter){
 
       for(i = 0; i< child.length; i++){
         alert("child[" + i + "]:" + child[i].nodeValue);
-        resultDom.appendChild(highLightAllChildsTexts(child[i],parameter));
+        dom.appendChild(highLightAllChildsTexts(child[i],parameter));
       }
 
     }
