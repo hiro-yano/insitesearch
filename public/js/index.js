@@ -139,6 +139,7 @@ var getAllChildsTexts = function(child,createResult){
     var i;
     for(i = 0; i< child.length; i++){
       createResult(child.textContent);
+      alert(child.textContent);
 
       if (child.hasChildNodes()) {
         getAllChildsTexts(child.childNodes,createResult);
