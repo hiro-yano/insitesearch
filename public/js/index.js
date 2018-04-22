@@ -103,10 +103,11 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
 
               var highLitedAhref = '<a href="' + html_url + '">'+ doHighLight(parameter,title) +'</a><br>';
 
-              $("#" + insert_info_arr[0]).append("<div>");
+              $("#" + insert_info_arr[0]).append('<div class="panel panel-default"><div class="panel-heading">');
               $("#" + insert_info_arr[0]).append(highLitedAhref);
+              $("#" + insert_info_arr[0]).append('</div><div class="panel-body">');
               $("#" + insert_info_arr[0]).append(doHighLight(parameter,listById));
-              $("#" + insert_info_arr[0]).append("</div>");
+              $("#" + insert_info_arr[0]).append("</div></div>");
 
         }
         countResultsFn(str_count);
