@@ -14,7 +14,7 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         var listById_innerHTML = $(document).find("#" + insert_info_arr[1])[0].innerHTML;
         var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
 
-        var listById_dom = highLightAllChildsTexts(listById_dom,parameter);
+        listById_dom = highLightAllChildsTexts(listById_dom,parameter);
 
         $("#" + insert_info_arr[0]).empty().append(listById_dom.innerHTML);
 
