@@ -99,3 +99,8 @@ body {
 #card-hight {
   height:250px
 }
+p.overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
