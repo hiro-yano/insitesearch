@@ -79,7 +79,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
         datatype: 'html'
     }).then(function(data){
         var out_html = $($.parseHTML(data));//parse
-        var title = out_html.getElementsByTagName("title")[0];
+        var title = out_html.getElementsByTagName("title")[0].innerHTML;
         alert(title);
 
         var listById = out_html.find("#" + insert_info_arr[1])[0].innerHTML;
