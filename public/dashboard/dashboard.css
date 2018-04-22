@@ -99,7 +99,7 @@ body {
 #card-hight {
   height:250px
 }
-p.overflow {
+p.cardtext {
   width: 200px;
   white-space: nowrap;
   overflow: hidden;
