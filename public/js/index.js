@@ -92,6 +92,8 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
             listById = listById + childTextContent;
           });
         }
+
+        alert(listById);
         
 
         var str_count = 0;
@@ -140,12 +142,11 @@ var getAllChildsTexts = function(child,createResult){
 
     var i;
     for(i = 0; i< child.length; i++){
-      
+
       if (child[i].hasChildNodes()) {
         getAllChildsTexts(child[i].childNodes,createResult);
       }else{
         createResult(child[i].textContent);
-        alert(child[i].textContent);
       }
     }
 }
