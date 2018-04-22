@@ -93,7 +93,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
           });
         }
 
-        alert(listById);
+        //alert(listById);
         
         var str_count = 0;
         str_count += strCount(parameter,listById);
@@ -103,8 +103,10 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
 
               var highLitedAhref = '<a href="' + html_url + '">'+ doHighLight(parameter,title) +'</a><br>';
 
+              $("#" + insert_info_arr[0]).append("<div>");
               $("#" + insert_info_arr[0]).append(highLitedAhref);
               $("#" + insert_info_arr[0]).append(doHighLight(parameter,listById));
+              $("#" + insert_info_arr[0]).append("</div>");
 
         }
         countResultsFn(str_count);
