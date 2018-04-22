@@ -85,8 +85,9 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
         var str_count = strCount(parameter,listById)
 
         if ( str_count != 0) {
-              //var elemLi = document.createElement('ul');    //  要素を生成
-              //elemLi.innerHTML =  listById                //  文字列設定
+              var ahref = '<a href="' + html_url + '">'+ out_html.title +'</a><br>'
+
+              $("#" + insert_info_arr[0]).append($.parseHTML(ahref));
               $("#" + insert_info_arr[0]).append(listById);//insert
 
         }
