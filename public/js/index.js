@@ -89,11 +89,9 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
         if ( str_count != 0) {
 
               var ahref = '<a href="' + html_url + '">'+ title +'</a><br>';
-              alert(ahref);
-              parser = new DOMParser();
               var ahref_dom = parser.parseFromString(ahref, "text/html");
 
-              $("#" + insert_info_arr[0]).append(ahref_dom);
+              $("#" + insert_info_arr[0]).append(ahref_dom.innerHTML);
               $("#" + insert_info_arr[0]).append(listById);
 
         }
