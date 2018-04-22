@@ -65,9 +65,8 @@ var highLightAllChildsTexts = function(dom,parameter){
       for(i = 0; i< child.length; i++){
         alert("child[" + i + "]:" + child[i].nodeValue);
         child[i] = highLightAllChildsTexts(child[i],parameter);
+        dom.appendChild(child[i]);
       }
-
-      dom.childNodes = child;
     }
 
     return dom;  
