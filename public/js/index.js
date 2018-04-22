@@ -86,8 +86,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
         var listById_dom = $(out_html).find("#" + insert_info_arr[1])[0];
 
         var listById = '';
-        if (listById_dom.hasChildNodes()) {
-          alert(listById_dom.childNodes[0].textContent);
+        if (!listById_dom.hasChildNodes) {
           getAllChildsTexts(listById_dom.childNodes, function(childTextContent){
             listById = listById + childTextContent;
           });
@@ -141,11 +140,11 @@ var getAllChildsTexts = function(child,createResult){
 
     var i;
     for(i = 0; i< child.length; i++){
-      createResult(child.textContent);
-      alert(child.textContent);
+      createResult(child[i].text());
+      alert(child[i].text());
 
-      if (child.hasChildNodes()) {
-        getAllChildsTexts(child.childNodes,createResult);
+      if (child[i].hasChildNodes()) {
+        getAllChildsTexts(child[i].childNodes,createResult);
       }
     }
 }
