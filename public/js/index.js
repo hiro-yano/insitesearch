@@ -101,7 +101,11 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
 
         if ( str_count != 0) {
 
-              var highLitedAhref = '<a href="' + html_url + '">'+ doHighLight(parameter,title) +'</a><br>';
+              var highLitedAhref = '<a href="' + html_url + '">'+ doHighLight(parameter,title) +'</a>';
+              var elm_highLitedAhref = document.createElement('a');
+              var createAText = document.createTextNode(theCounter);
+              createAText.setAttribute('href', html_url);
+              elm_highLitedAhref.appendChild(createAText);
 
               var elm_topdiv = document.createElement('div');
               elm_topdiv.className = 'card';
@@ -109,8 +113,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
               elm_subdiv.className = 'card-body';
               var elm_h5 = document.createElement('h5');
               elm_h5.className = 'card-title';
-              var elm_title = document.createTextNode(highLitedAhref);
-              elm_h5.appendChild(elm_title);
+              elm_h5.appendChild(elm_highLitedAhref);
               var elm_p = document.createElement('p');
               elm_p.className = 'card-text';
               var elm_content = document.createTextNode(doHighLight(parameter,listById));
