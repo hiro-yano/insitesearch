@@ -100,10 +100,11 @@ body {
   height:250px
 }
 p.card-text {
-  width: 60%;
-  height: 6em;
-  line-height: 1.5em;
-  white-space: nowrap;
+  position: relative;
+  word-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; ←行数
+  -webkit-box-orient: vertical;
 }
