@@ -92,7 +92,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
               var ahref_dom = parser.parseFromString(ahref, "text/html");
               alert(ahref_dom);
 
-              $("#" + insert_info_arr[0]).append(ahref_dom.innerHTML);
+              $("#" + insert_info_arr[0]).append(ahref_dom);
               $("#" + insert_info_arr[0]).append(listById);
 
         }
