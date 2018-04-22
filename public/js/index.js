@@ -84,7 +84,8 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
         var title = out_html.getElementsByTagName("title")[0].innerHTML;
 
         var listById = $(out_html).find("#" + insert_info_arr[1])[0].innerHTML;
-        var str_count = strCount(parameter,listById)
+        var str_count = strCount(parameter,listById);
+        str_count += strCount(parameter,title);
 
         if ( str_count != 0) {
 
