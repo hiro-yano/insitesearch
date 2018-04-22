@@ -85,7 +85,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
 
         var listById_dom = $(out_html).find("#" + insert_info_arr[1])[0];
         //var listById_dom = out_html.getElementById(insert_info_arr[1])[0];
-        alert("dom name:" + listById_dom.children()[0].innerHTML);
+        alert("dom name:" + listById_dom.children());
 
         var listById = '';
         if (!listById_dom.children()) {
