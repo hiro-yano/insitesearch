@@ -101,10 +101,10 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
 
         if ( str_count != 0) {
 
-              var highLitedAhref = '<a href="' + html_url + '">'+ doHighLight(parameter,title) +'</a>';
+              //var highLitedAhref = '<a href="' + html_url + '">'+ doHighLight(parameter,title) +'</a>';
               var elm_highLitedAhref = document.createElement('a');
-              var createAText = document.createTextNode(theCounter);
-              createAText.setAttribute('href', html_url);
+              elm_highLitedAhref.setAttribute('href', html_url);
+              var createAText = document.createTextNode(doHighLight(parameter,title));
               elm_highLitedAhref.appendChild(createAText);
 
               var elm_topdiv = document.createElement('div');
