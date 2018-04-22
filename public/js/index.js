@@ -86,10 +86,12 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
         var listById_dom = $(out_html).find("#" + insert_info_arr[1])[0];
 
         var listById = '';
-        getAllChildsTexts(listById_dom, function(childTextContent){
+        if (listById_dom.hasChildNodes()) {
+          getAllChildsTexts(listById_dom.childNodes, function(childTextContent){
             listById = listById + childTextContent;
-        });
-
+          });
+        }
+        
         alert("dom:" + listById_dom + ":" + listById);
 
         var str_count = 0;
