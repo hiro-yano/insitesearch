@@ -97,7 +97,7 @@ body {
 }
 
 #card-hight {
-  height:200px
+  height:auto;
 }
 p.card-text {
   position: relative;
