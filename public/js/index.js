@@ -83,7 +83,14 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
         var out_html = parser.parseFromString(data, "text/html");
         var title = out_html.getElementsByTagName("title")[0].innerHTML;
 
-        var listById = $(out_html).find("#" + insert_info_arr[1])[0].innerHTML;
+        var listById_dom = $(out_html).find("#" + insert_info_arr[1])[0];
+
+        var listById = '';
+        getAllChildsTexts(listById_dom, function(childTextContent){
+            listById = listById + childTextContent;
+        });
+
+
         var str_count = 0;
         str_count += strCount(parameter,listById);
         str_count += strCount(parameter,title);
@@ -94,7 +101,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
               var ahref = '<a href="' + html_url + '">'+ title +'</a><br>';
 
               $("#" + insert_info_arr[0]).append(ahref);
-              $("#" + insert_info_arr[0]).append(listById);
+              $("#" + insert_info_arr[0]).append(listById_dom.innerHTML);
 
         }
         countResultsFn(str_count);
@@ -124,6 +131,19 @@ var strCount = function(searchStr, str) {
  
     return count;
 };
+
+var getAllChildsTexts = function(child,createResult){
+    if(!child || !createResult) return '';
+
+    var i;
+    for(i = 0; i< child.length; i++){
+      createResult(child.textContent);
+
+      if (child.hasChildNodes()) {
+        getAllChildsTexts(child.childNodes,createResult);
+      }
+    }
+}
 
 
 function enter(code)
