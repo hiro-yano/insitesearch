@@ -48,7 +48,7 @@ var doHighLight = function(searchStr, str) {
 var highLightAllChildsTexts = function(dom,parameter){
     if(!dom || !parameter) return;
 
-    if(dom.textContent!==''){
+    if(dom.textContent!=''|dom.textContent!='null'){
       dom.textContent = doHighLight(parameter, dom.textContent);
       alert(dom.textContent);
     }
