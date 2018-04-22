@@ -3,7 +3,7 @@ $(function () {
   var parameter = getParameter();
   var totalCount = 0;
 
-  var pageList = ['dashboard', 'orders', 'products', 'customers', 'reports', 'integrations'];
+  var pageList = ['index', 'orders', 'products', 'customers', 'reports', 'integrations'];
 　var i;
   if(parameter != ''){
     for(i = 0; i < pageList.length; ++i){
