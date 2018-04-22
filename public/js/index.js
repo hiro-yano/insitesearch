@@ -89,7 +89,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
         alert("dom name:" + listById_dom.childNodes[0].textContent);
 
         var listById = '';
-        if (!listById_dom.hasChildNodes()) {
+        if (listById_dom.hasChildNodes()) {
           getAllChildsTexts(listById_dom.childNodes, function(childTextContent){
             listById = listById + childTextContent;
           });
