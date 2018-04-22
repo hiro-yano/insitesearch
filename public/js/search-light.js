@@ -12,8 +12,11 @@ $(function () {
 var load_html_and_insert = function (insert_info_arr, parameter){
 
         var listById_innerHTML = $(document).find("#" + insert_info_arr[1])[0].innerHTML;
+        var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
 
-        $("#" + insert_info_arr[0]).empty().append(doHighLight(parameter,listById_innerHTML));
+        var listById_dom = highLightAllChildsTexts(listById_dom,parameter);
+
+        $("#" + insert_info_arr[0]).empty().append(listById_dom.innerHTML);
 
 };
 
@@ -41,6 +44,29 @@ var doHighLight = function(searchStr, str) {
  
     return highLitedStr;
 };
+
+var highLightAllChildsTexts = function(dom,parameter){
+    if(!dom || !parameter) return;
+
+    if(dom.textContent!==''){
+      dom.textContent = doHighLight(parameter, dom.textContent);
+    }
+    
+    if(dom.hasChildNodes()){
+      var child = dom.childNodes;
+      var i;
+
+      for(i = 0; i< child.length; i++){
+        if(child[i].textContent!==''){
+          child[i].textContent = doHighLight(parameter, child[i].textContent);
+        }
+
+        highLightAllChildsTexts(child[i],parameter);
+      }
+    }
+
+    return dom;  
+}
 
 
 function enter(code)
