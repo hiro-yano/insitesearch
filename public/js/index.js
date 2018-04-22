@@ -80,12 +80,12 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
     }).then(function(data){
         var out_html = $($.parseHTML(data));//parse
 
-        var i;
         var listById = out_html.find("#" + insert_info_arr[1])[0].innerHTML;
         var str_count = strCount(parameter,listById)
 
         if ( str_count != 0) {
-              var ahref = '<a href="' + html_url + '">'+ out_html.title +'</a><br>'
+              var title = out_html.getElementsByTagName("title")[0];
+              var ahref = '<a href="' + html_url + '">'+ title +'</a><br>'
 
               $("#" + insert_info_arr[0]).append($.parseHTML(ahref));
               $("#" + insert_info_arr[0]).append(listById);//insert
