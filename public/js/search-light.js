@@ -50,6 +50,7 @@ var highLightAllChildsTexts = function(dom,parameter){
 
     if(dom.textContent!==''){
       dom.textContent = doHighLight(parameter, dom.textContent);
+      alert("child[" + i + "]:" + child[i].textContent);
     }
     
     if(dom.hasChildNodes()){
@@ -57,11 +58,7 @@ var highLightAllChildsTexts = function(dom,parameter){
       var i;
 
       for(i = 0; i< child.length; i++){
-        if(child[i].textContent!==''){
-          child[i].textContent = doHighLight(parameter, child[i].textContent);
-        }
-
-        highLightAllChildsTexts(child[i],parameter);
+          highLightAllChildsTexts(child[i],parameter);
       }
 
       dom.childNodes = child;
