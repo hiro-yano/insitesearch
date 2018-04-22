@@ -67,7 +67,7 @@ var highLightAllChildsTexts = function(dom,parameter){
 
     }
 
-    return resultDom;  
+    return dom;  
 }
 
 
