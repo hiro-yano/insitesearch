@@ -116,7 +116,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
               elm_h5.appendChild(elm_highLitedAhref);
               var elm_p = document.createElement('p');
               elm_p.className = 'card-text';
-              var elm_content = document.createTextNode(doHighLight(parameter,listById));
+              elm_p.innerHTML = doHighLight(parameter,listById);
               elm_p.appendChild(elm_content);
               elm_subdiv.appendChild(elm_h5);
               elm_topdiv.appendChild(elm_subdiv);
