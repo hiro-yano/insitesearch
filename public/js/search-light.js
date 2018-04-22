@@ -63,6 +63,8 @@ var highLightAllChildsTexts = function(dom,parameter){
 
         highLightAllChildsTexts(child[i],parameter);
       }
+
+      dom.childNodes = child;
     }
 
     return dom;  
