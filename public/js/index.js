@@ -92,18 +92,12 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
             listById = listById + childTextContent;
           });
         }
-
-        //alert(listById);
         
         var str_count = 0;
         str_count += strCount(parameter,listById);
         str_count += strCount(parameter,title);
 
         if ( str_count != 0) {
-
-              //var highLitedAhref = '<a href="' + html_url + '">'+ doHighLight(parameter,title) +'</a>';
-              
-              //elm_highLitedAhref.appendChild(createAText);
 
               var elm_topdiv = document.createElement('div');
               elm_topdiv.className = 'card';
@@ -129,13 +123,6 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
               elm_topdiv.appendChild(elm_subdiv);
 
               $("#" + insert_info_arr[0]).append(elm_topdiv);
-
-              //$("#" + insert_info_arr[0]).append('<div class="card">');
-              //$("#" + insert_info_arr[0]).append('<div class="card-body">');
-              //$("#" + insert_info_arr[0]).append('<h5 class="card-title">' + highLitedAhref + '</h5>');
-              //$("#" + insert_info_arr[0]).append('<p class="card-text">' + doHighLight(parameter,listById) + '</p>');
-              //$("#" + insert_info_arr[0]).append('</div>');
-              //$("#" + insert_info_arr[0]).append('</div>');
 
         }
         countResultsFn(str_count);
