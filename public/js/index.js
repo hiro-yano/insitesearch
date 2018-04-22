@@ -101,9 +101,9 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
 
         if ( str_count != 0) {
 
-              var ahref = '<a href="' + html_url + '">'+ doHighLight(parameter,title) +'</a><br>';
+              var highLitedAhref = '<a href="' + html_url + '">'+ doHighLight(parameter,title) +'</a><br>';
 
-              $("#" + insert_info_arr[0]).append(doHighLight(parameter,ahref));
+              $("#" + insert_info_arr[0]).append(highLitedAhref);
               $("#" + insert_info_arr[0]).append(doHighLight(parameter,listById_innerHTML));
 
         }
