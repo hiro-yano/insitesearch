@@ -100,8 +100,9 @@ body {
   height:250px
 }
 p.card-text {
-  width: 250px;
-  height: 1000px;
+  position: relative;
+  height: 80px;
+  line-height: 20px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
