@@ -13,10 +13,12 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         var listById_innerHTML = $(document).find("#" + insert_info_arr[1])[0].innerHTML;
         var parser = new DOMParser();
         var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
+        var resultListById_dom;
 
-        listById_dom = highLightAllChildsTexts(listById_dom,parameter);
+        resultListById_dom = highLightAllChildsTexts(listById_dom,parameter);
+        alert("result:" + resultListById_dom.innerHTML);
 
-        $("#" + insert_info_arr[0]).empty().append(listById_dom.innerHTML);
+        $("#" + insert_info_arr[0]).empty().append(resultListById_dom.innerHTML);
 
 };
 
