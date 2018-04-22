@@ -90,7 +90,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
             listById = listById + childTextContent;
         });
 
-        alert(listById);
+        alert("dom:" + listById_dom + ":" + listById);
 
         var str_count = 0;
         str_count += strCount(parameter,listById);
