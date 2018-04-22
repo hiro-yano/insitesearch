@@ -83,13 +83,13 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
         var out_html = parser.parseFromString(data, "text/html");
         var title = out_html.getElementsByTagName("title")[0].innerHTML;
 
-        //var listById_dom = $(out_html).find("#" + insert_info_arr[1])[0];
-        var listById_dom = out_html.getElementById(insert_info_arr[1])[0];
+        var listById_dom = $(out_html).find("#" + insert_info_arr[1])[0];
+        //var listById_dom = out_html.getElementById(insert_info_arr[1])[0];
         alert("dom name:" + listById_dom.innerHTML);
 
         var listById = '';
-        if (!listById_dom.hasChildNodes) {
-          getAllChildsTexts(listById_dom.childNodes, function(childTextContent){
+        if (!listById_dom.children()) {
+          getAllChildsTexts(listById_dom.children(), function(childTextContent){
             listById = listById + childTextContent;
           });
         }
@@ -145,8 +145,8 @@ var getAllChildsTexts = function(child,createResult){
       createResult(child[i].text());
       alert(child[i].text());
 
-      if (child[i].hasChildNodes()) {
-        getAllChildsTexts(child[i].childNodes,createResult);
+      if (child[i].children()) {
+        getAllChildsTexts(child[i].children(),createResult);
       }
     }
 }
