@@ -101,6 +101,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
 
               var elm_topdiv = document.createElement('div');
               elm_topdiv.className = 'card';
+              elm_topdiv.id = 'card-hight';
 
               var elm_subdiv = document.createElement('div');
               elm_subdiv.className = 'card-body';

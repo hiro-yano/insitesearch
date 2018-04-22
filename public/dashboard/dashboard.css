@@ -95,3 +95,7 @@ body {
 .highlight {
   background-color: #fffd77;
 }
+
+#card-hight {
+  height:250px
+}
