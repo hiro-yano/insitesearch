@@ -1,7 +1,6 @@
 $(function () {
 
   var parameter = getParameter();
-  var totalCount = 0;
 
   if(parameter != ''){
       load_html_and_insert(["target-area-list", "target-area-list"], parameter); 
@@ -12,8 +11,9 @@ $(function () {
 var load_html_and_insert = function (insert_info_arr, parameter){
 
         var listById_innerHTML = $(document).find("#" + insert_info_arr[1])[0].innerHTML;
+        var parser = new DOMParser();
         var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
-        alert(listById_dom);
+
         listById_dom = highLightAllChildsTexts(listById_dom,parameter);
 
         $("#" + insert_info_arr[0]).empty().append(listById_dom.innerHTML);
@@ -62,7 +62,7 @@ var highLightAllChildsTexts = function(dom,parameter){
           child[i] = highLightAllChildsTexts(child[i],parameter);
       }
 
-      dom.childNodes = child;
+      //dom.childNodes = child;
     }
 
     return dom;  
