@@ -140,9 +140,9 @@ function getParameter(){
  
   // URLにパラメータが存在する場合
   if(urlParam) {
-    return decodeURI(urlParam)
+    return decodeURI(urlParam).trim();
   }else{
-    return ''
+    return '';
   }
  
 }
