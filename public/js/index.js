@@ -78,11 +78,13 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
         timeout : 1000,
         datatype: 'html'
     }).then(function(data){
-        var out_html = $($.parseHTML(data));//parse
+        //var out_html = $($.parseHTML(data));//parse
         //var title = out_html.filter('title').text();
-        var title = $.parseHTML(data).getElementsByTagName("title")[0].innterHTML;
+        var parser = new DOMParser();
+        var out_html = parser.parseFromString(data, "text/html");
+        var title = out_html.getElementsByTagName("title")[0].innerHTML;
 
-        var listById = out_html.find("#" + insert_info_arr[1])[0].innerHTML;
+        var listById = $(out_html).find("#" + insert_info_arr[1])[0].innerHTML;
         var str_count = strCount(parameter,listById)
 
         if ( str_count != 0) {
