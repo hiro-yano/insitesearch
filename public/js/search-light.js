@@ -48,9 +48,9 @@ var doHighLight = function(searchStr, str) {
 var highLightAllChildsTexts = function(dom,parameter){
     if(!dom || !parameter) return;
 
-    if(dom.textContent!=''|dom.textContent!='null'){
-      dom.textContent = doHighLight(parameter, dom.textContent);
-      alert(dom.textContent);
+    if(dom.nodeValue!=''|dom.nodeValue!='null'){
+      dom.nodeValue = doHighLight(parameter, dom.nodeValue);
+      alert(dom.nodeValue);
     }
     
     if(dom.hasChildNodes()){
@@ -58,7 +58,7 @@ var highLightAllChildsTexts = function(dom,parameter){
       var i;
 
       for(i = 0; i< child.length; i++){
-        alert("child[" + i + "]:" + child[i].textContent);
+        alert("child[" + i + "]:" + child[i].nodeValue);
           child[i] = highLightAllChildsTexts(child[i],parameter);
       }
 
