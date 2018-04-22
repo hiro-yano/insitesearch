@@ -84,7 +84,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
         var str_count = strCount(parameter,listById)
 
         if ( str_count != 0) {
-              var title = out_html.getElementsByTagName("title")[0];
+              var title = out_html.getElementsByTagName("title")[0].innerHTML;
               var ahref = '<a href="' + html_url + '">'+ title +'</a><br>'
 
               $("#" + insert_info_arr[0]).append($.parseHTML(ahref));
