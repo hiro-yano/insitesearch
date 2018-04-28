@@ -16,13 +16,16 @@ var load_html_and_insert = function (insert_info_arr, parameter){
 
         //var resultListById_dom = document.createElement(listById_dom.tagName);
         //highLightAllChildsTexts(listById_dom,parameter);
-        var node;
-        while (node = walker.nextNode()) {
+        var node = listById_dom;
+        node.nodeValue = doHighLight(parameter, node.nodeValue);
+
+        while (node = listById_dom.nextNode()) {
           node.nodeValue = doHighLight(parameter, node.nodeValue);
         }
-        alert("result:" + listById_dom.innerHTML);
+        alert("result:" + node.innerHTML);
 
-        $("#" + insert_info_arr[0]).empty().append(listById_dom);
+        //$("#" + insert_info_arr[0]).empty().append(listById_dom);
+        $("#" + insert_info_arr[0]).empty().append(node);
 
 };
 
