@@ -50,11 +50,8 @@ var doHighLight = function(searchStr, str) {
 var highLightAllChildsTexts = function(dom,parameter){
     if(!dom || !parameter) return;
 
-    var textnode;
-
     if(dom.nodeValue!=''|dom.nodeValue!='null'){
-      textnode = document.createTextNode(doHighLight(parameter, dom.nodeValue));
-      dom.appendChild(textnode);
+      dom.nodeValue = document.createTextNode(doHighLight(parameter, dom.nodeValue));
     }
     
     if(dom.hasChildNodes()){
