@@ -14,6 +14,8 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         var parser = new DOMParser();
         var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
 
+printDom(listById_dom);
+
         //var resultListById_dom = document.createElement(listById_dom.tagName);
         highLightAllChildsTexts(listById_dom,parameter);
         //var node = listById_dom;
