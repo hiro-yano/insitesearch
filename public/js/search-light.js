@@ -28,10 +28,12 @@ function highLightAllChildsTexts(dom,parameter){
 
     //var textNodeHilighted;
 
-    if(!dom.nodeValue){
+    if(dom.innerHTML!=''){
       //dom.nodeValue = document.createTextNode(doHighLight(parameter, dom.nodeValue));
-      dom.nodeValue = doHighLight(parameter, dom.nodeValue);
-      alert("nodevalue:" + dom.nodeValue);
+      //dom.nodeValue = doHighLight(parameter, dom.nodeValue);
+      //alert("nodevalue:" + dom.nodeValue);
+      dom.nodeValue = doHighLight(parameter, dom.innerHTML);
+      alert("nodevalue:" + dom.innerHTML);
       //appendChildFn(textNodeHilighted);
     }
     
