@@ -50,21 +50,20 @@ var doHighLight = function(searchStr, str) {
 var highLightAllChildsTexts = function(dom,parameter){
     if(!dom || !parameter) return;
 
-    //var resultDom = dom;
-    //resultDom.childNodes = null;
+    var textnode;
 
     if(dom.nodeValue!=''|dom.nodeValue!='null'){
-      dom.nodeValue = doHighLight(parameter, dom.nodeValue);
-      alert(dom.nodeValue);
+      textnode = document.createTextNode(doHighLight(parameter, dom.nodeValue));
+      dom.appendChild(textnode);
     }
     
     if(dom.hasChildNodes()){
-      var child = dom.childNodes;
+      
       var i;
 
-      for(i = 0; i< child.length; i++){
-        alert("child[" + i + "]:" + child[i].nodeValue);
-        child[i] = highLightAllChildsTexts(child[i],parameter);
+      for(i = 0; i< dom.childNodes.length; i++){
+        alert("child[" + i + "]:" + dom.childNodes[i].nodeValue);
+        highLightAllChildsTexts(dom.childNodes[i],parameter);
       }
     }
 
