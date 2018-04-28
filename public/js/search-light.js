@@ -25,7 +25,7 @@ var load_html_and_insert = function (insert_info_arr, parameter){
             alert(":" + listById_dom.nodeValue);
             listById_dom.nodeValue = doHighLight(parameter, listById_dom.nodeValue);
           }
-          listById_dom = listById_dom.nextNode();
+          listById_dom = listById_dom.nextElementSibling;
           alert("next:" + listById_dom.nodeValue);
         }
         alert("result:" + listById_dom);
