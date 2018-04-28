@@ -29,7 +29,8 @@ function highLightAllChildsTexts(dom,parameter){
     //var textNodeHilighted;
 
     if(dom.nodeValue!=''|dom.nodeValue!='null'){
-      dom.nodeValue = document.createTextNode(doHighLight(parameter, dom.nodeValue));
+      //dom.nodeValue = document.createTextNode(doHighLight(parameter, dom.nodeValue));
+      dom.nodeValue = doHighLight(parameter, dom.nodeValue);
       alert("nodevalue:" + dom.nodeValue);
       //appendChildFn(textNodeHilighted);
     }
