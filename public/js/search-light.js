@@ -41,7 +41,7 @@ function highLightAllChildsTexts(dom,parameter,appendChildFn){
       var childElement;
 
       for(i = 0; i< dom.childNodes.length; i++){
-        //alert("child[" + i + "]:" + dom.childNodes[i].nodeValue);
+        alert("child[" + i + "]:" + dom.childNodes[i].nodeValue);
         childElement = document.createElement(dom.childNodes[i].tagName);
         appendChildFn(childElement);
 
