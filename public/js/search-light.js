@@ -13,14 +13,43 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         var listById_innerHTML = $(document).find("#" + insert_info_arr[1])[0].innerHTML;
         var parser = new DOMParser();
         var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
-        var resultListById_dom;
 
-        resultListById_dom = highLightAllChildsTexts(listById_dom,parameter);
+        var resultListById_dom = document.createElement(listById_dom.tagName);
+        highLightAllChildsTexts(listById_dom,parameter,function(child){
+          resultListById_dom.appendChild(child);
+        });
         alert("result:" + resultListById_dom.innerHTML);
 
         $("#" + insert_info_arr[0]).empty().append(resultListById_dom.innerHTML);
 
 };
+
+
+function highLightAllChildsTexts(dom,parameter,appendChildFn){
+    if(!dom || !parameter) return;
+
+    var textNodeHilighted;
+
+    if(dom.nodeValue!=''|dom.nodeValue!='null'){
+      textNodeHilighted = document.createTextNode(doHighLight(parameter, dom.nodeValue));
+      appendChildFn(textNodeHilighted);
+    }
+    
+    if(dom.hasChildNodes()){
+      
+      var i;
+      var childElement;
+
+      for(i = 0; i< dom.childNodes.length; i++){
+        //alert("child[" + i + "]:" + dom.childNodes[i].nodeValue);
+        childElement = document.createElement(dom.childNodes[i].tagName);
+        appendChildFn(childElement);
+
+        highLightAllChildsTexts(dom.childNodes[i],parameter);
+      }
+    }
+
+}
 
 
 var doHighLight = function(searchStr, str) {
@@ -47,25 +76,6 @@ var doHighLight = function(searchStr, str) {
     return highLitedStr;
 };
 
-var highLightAllChildsTexts = function(dom,parameter){
-    if(!dom || !parameter) return;
-
-    if(dom.nodeValue!=''|dom.nodeValue!='null'){
-      dom.nodeValue = document.createTextNode(doHighLight(parameter, dom.nodeValue));
-    }
-    
-    if(dom.hasChildNodes()){
-      
-      var i;
-
-      for(i = 0; i< dom.childNodes.length; i++){
-        alert("child[" + i + "]:" + dom.childNodes[i].nodeValue);
-        highLightAllChildsTexts(dom.childNodes[i],parameter);
-      }
-    }
-
-    return dom;  
-}
 
 
 function enter(code)
