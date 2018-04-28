@@ -21,7 +21,9 @@ var load_html_and_insert = function (insert_info_arr, parameter){
 
         while (listById_dom) {
           alert(":" + listById_dom.nodeValue);
-          listById_dom.nodeValue = doHighLight(parameter, listById_dom.nodeValue);
+          if(listById_dom.nodeValue!=null){
+            listById_dom.nodeValue = doHighLight(parameter, listById_dom.nodeValue);
+          }
           listById_dom = listById_dom.nextNode();
           alert("next:" + listById_dom.nodeValue);
         }
