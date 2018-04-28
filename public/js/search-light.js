@@ -48,8 +48,8 @@ function highLightAllChildsTexts(dom,parameter){
         highLightAllChildsTexts(dom.childNodes[i],parameter);
       }
     }else{
-      dom.textContent = doHighLight(parameter, dom.textContent);
-      alert("nodevalue:" + dom.textContent);
+      dom.nodeValue = doHighLight(parameter, dom.nodeValue);
+      alert("nodevalue:" + dom.nodeValue);
     }
 
 }
