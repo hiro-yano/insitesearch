@@ -18,7 +18,7 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         highLightAllChildsTexts(listById_dom,parameter);
         alert("result:" + listById_dom.innerHTML);
 
-        $("#" + insert_info_arr[0]).empty().append(listById_dom.innerHTML);
+        $("#" + insert_info_arr[0]).empty().append(listById_dom);
 
 };
 
@@ -28,7 +28,7 @@ function highLightAllChildsTexts(dom,parameter){
 
     //var textNodeHilighted;
 
-    if(dom.nodeValue!=''|dom.nodeValue!='null'){
+    if(dom.nodeValue!=''|dom.nodeValue!=null){
       //dom.nodeValue = document.createTextNode(doHighLight(parameter, dom.nodeValue));
       dom.nodeValue = doHighLight(parameter, dom.nodeValue);
       alert("nodevalue:" + dom.nodeValue);
