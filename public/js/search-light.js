@@ -28,7 +28,7 @@ var load_html_and_insert = function (insert_info_arr, parameter){
           listById_dom = listById_dom.nextSibling;
           alert("next:" + listById_dom.nodeValue);
         }*/
-        alert("result:" + listById_dom.innerHTML);
+        alert("result:" + listById_dom[0].innerHTML);
 
         $("#" + insert_info_arr[0]).empty().append(listById_dom);
         //$("#" + insert_info_arr[0]).empty().append(node);
@@ -41,7 +41,7 @@ function highLightAllChildsTexts(dom,parameter){
 
     //var textNodeHilighted;
 
-    if(dom.nodeType==3){
+    if(dom.nodeType==3 && dom.nodeValue!=''){
       //dom.nodeValue = document.createTextNode(doHighLight(parameter, dom.nodeValue));
       //dom.nodeValue = doHighLight(parameter, dom.nodeValue);
       //alert("nodevalue:" + dom.nodeValue);
