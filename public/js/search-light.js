@@ -15,10 +15,10 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
 
         //var resultListById_dom = document.createElement(listById_dom.tagName);
-        //highLightAllChildsTexts(listById_dom,parameter);
-        var node = listById_dom;
+        highLightAllChildsTexts(listById_dom,parameter);
+        //var node = listById_dom;
         //node.nodeValue = doHighLight(parameter, node.nodeValue);
-
+/*
         while (listById_dom) {
           
           if(listById_dom.nodeValue!=null){
@@ -27,7 +27,7 @@ var load_html_and_insert = function (insert_info_arr, parameter){
           }
           listById_dom = listById_dom.nextSibling;
           alert("next:" + listById_dom.nodeValue);
-        }
+        }*/
         alert("result:" + listById_dom);
 
         $("#" + insert_info_arr[0]).empty().append(listById_dom);
@@ -41,12 +41,12 @@ function highLightAllChildsTexts(dom,parameter){
 
     //var textNodeHilighted;
 
-    if(dom.innerHTML!=''){
+    if(dom.nodeType==3){
       //dom.nodeValue = document.createTextNode(doHighLight(parameter, dom.nodeValue));
       //dom.nodeValue = doHighLight(parameter, dom.nodeValue);
       //alert("nodevalue:" + dom.nodeValue);
-      dom.nodeValue = doHighLight(parameter, dom.innerHTML);
-      alert("nodevalue:" + dom.innerHTML);
+      dom.nodeValue = doHighLight(parameter, dom.nodeValue);
+      alert("nodevalue:" + dom.nodeValue);
       //appendChildFn(textNodeHilighted);
     }
     
@@ -59,8 +59,7 @@ function highLightAllChildsTexts(dom,parameter){
         //alert("child[" + i + "]:" + dom.childNodes[i].nodeValue);
         //childElement = document.createElement(dom.childNodes[i].tagName);
         //appendChildFn(childElement);
-
-        highLightAllChildsTexts(dom.childNodes[i],parameter);
+        highLightAllChildsTexts(dom.childNodes.item(i),parameter);
       }
     }
 
