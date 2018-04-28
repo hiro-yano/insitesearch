@@ -15,7 +15,11 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
 
         //var resultListById_dom = document.createElement(listById_dom.tagName);
-        highLightAllChildsTexts(listById_dom,parameter);
+        //highLightAllChildsTexts(listById_dom,parameter);
+        var node;
+        while (node = walker.nextNode()) {
+          node.nodeValue = doHighLight(parameter, node.nodeValue);
+        }
         alert("result:" + listById_dom.innerHTML);
 
         $("#" + insert_info_arr[0]).empty().append(listById_dom);
