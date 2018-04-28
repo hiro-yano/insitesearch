@@ -28,10 +28,11 @@ var load_html_and_insert = function (insert_info_arr, parameter){
           listById_dom = listById_dom.nextSibling;
           alert("next:" + listById_dom.nodeValue);
         }*/
-        alert("result:" + listById_dom.innerHTML);
+        //alert("result:" + listById_dom.innerHTML);
+        printDom(listById_dom);
 
         $("#" + insert_info_arr[0]).append(listById_dom);
-        $("#" + insert_info_arr[0]).append(listById_dom);
+        //$("#" + insert_info_arr[0]).append(listById_dom);
         //$("#" + insert_info_arr[0]).empty().append(node);
 
 };
@@ -66,6 +67,27 @@ function highLightAllChildsTexts(dom,parameter){
 
 }
 
+function printDom(dom){
+    if(!dom || !parameter) return;
+
+    if(dom.nodeType==1){
+      alert("print dom value:" + dom.tagName);
+    }
+
+    if(dom.nodeType==3){
+      alert("print dom value:" + dom.nodeValue);
+    }
+    
+    if(dom.hasChildNodes()){
+      
+      var i;
+
+      for(i = 0; i< dom.childNodes.length; i++){
+        printDom(dom.childNodes.item(i));
+      }
+    }
+
+}
 
 var doHighLight = function(searchStr, str) {
     if (!searchStr || !str) return 0;
