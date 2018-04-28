@@ -20,8 +20,9 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         //node.nodeValue = doHighLight(parameter, node.nodeValue);
 
         while (listById_dom) {
-          alert(":" + listById_dom.nodeValue);
+          
           if(listById_dom.nodeValue!=null){
+            alert(":" + listById_dom.nodeValue);
             listById_dom.nodeValue = doHighLight(parameter, listById_dom.nodeValue);
           }
           listById_dom = listById_dom.nextNode();
