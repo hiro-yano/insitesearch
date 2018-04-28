@@ -21,13 +21,13 @@ var load_html_and_insert = function (insert_info_arr, parameter){
 
         while (node) {
           alert("result:" + node);
-          node.nodeValue = doHighLight(parameter, node.nodeValue);
+          node.nodeValue = node.nodeValue.replace(node.nodeValue,doHighLight(parameter, node.nodeValue));
           node = node.nextNode();
         }
-        alert("result:" + listById_dom);
+        alert("result:" + node);
 
-        $("#" + insert_info_arr[0]).empty().append(listById_dom);
-        //$("#" + insert_info_arr[0]).empty().append(node);
+        //$("#" + insert_info_arr[0]).empty().append(listById_dom);
+        $("#" + insert_info_arr[0]).empty().append(node);
 
 };
 
