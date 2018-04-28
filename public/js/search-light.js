@@ -14,36 +14,35 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         var parser = new DOMParser();
         var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
 
-        var resultListById_dom = document.createElement(listById_dom.tagName);
-        highLightAllChildsTexts(listById_dom,parameter,function(child){
-          resultListById_dom.appendChild(child);
-        });
-        alert("result:" + resultListById_dom.innerHTML);
+        //var resultListById_dom = document.createElement(listById_dom.tagName);
+        highLightAllChildsTexts(listById_dom,parameter);
+        alert("result:" + listById_dom.innerHTML);
 
-        $("#" + insert_info_arr[0]).empty().append(resultListById_dom.innerHTML);
+        $("#" + insert_info_arr[0]).empty().append(listById_dom.innerHTML);
 
 };
 
 
-function highLightAllChildsTexts(dom,parameter,appendChildFn){
+function highLightAllChildsTexts(dom,parameter){
     if(!dom || !parameter) return;
 
-    var textNodeHilighted;
+    //var textNodeHilighted;
 
     if(dom.nodeValue!=''|dom.nodeValue!='null'){
-      textNodeHilighted = document.createTextNode(doHighLight(parameter, dom.nodeValue));
-      appendChildFn(textNodeHilighted);
+      dom.nodeValue = document.createTextNode(doHighLight(parameter, dom.nodeValue));
+      alert("nodevalue:" + dom.nodeValue);
+      //appendChildFn(textNodeHilighted);
     }
     
     if(dom.hasChildNodes()){
       
       var i;
-      var childElement;
+      //var childElement;
 
       for(i = 0; i< dom.childNodes.length; i++){
         alert("child[" + i + "]:" + dom.childNodes[i].nodeValue);
-        childElement = document.createElement(dom.childNodes[i].tagName);
-        appendChildFn(childElement);
+        //childElement = document.createElement(dom.childNodes[i].tagName);
+        //appendChildFn(childElement);
 
         highLightAllChildsTexts(dom.childNodes[i],parameter);
       }
