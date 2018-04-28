@@ -19,15 +19,15 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         var node = listById_dom;
         //node.nodeValue = doHighLight(parameter, node.nodeValue);
 
-        while (node) {
-          alert("result:" + node);
-          node.nodeValue = node.nodeValue.replace(node.nodeValue,doHighLight(parameter, node.nodeValue));
-          node = node.nextNode();
+        while (listById_dom) {
+          alert(":" + listById_dom);
+          listById_dom.nodeValue = doHighLight(parameter, listById_dom.nodeValue);
+          listById_dom = listById_dom.nextNode();
         }
-        alert("result:" + node);
+        alert("result:" + listById_dom);
 
-        //$("#" + insert_info_arr[0]).empty().append(listById_dom);
-        $("#" + insert_info_arr[0]).empty().append(node);
+        $("#" + insert_info_arr[0]).empty().append(listById_dom);
+        //$("#" + insert_info_arr[0]).empty().append(node);
 
 };
 
