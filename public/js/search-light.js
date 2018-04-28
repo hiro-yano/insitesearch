@@ -28,7 +28,7 @@ var load_html_and_insert = function (insert_info_arr, parameter){
           listById_dom = listById_dom.nextSibling;
           alert("next:" + listById_dom.nodeValue);
         }*/
-        alert("result:" + listById_dom[0].innerHTML);
+        alert("result:" + listById_dom.innerHTML);
 
         $("#" + insert_info_arr[0]).empty().append(listById_dom);
         //$("#" + insert_info_arr[0]).empty().append(node);
