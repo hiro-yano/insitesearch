@@ -16,8 +16,8 @@ var load_html_and_insert = function (insert_info_arr, parameter){
 
         //var resultListById_dom = document.createElement(listById_dom.tagName);
         //highLightAllChildsTexts(listById_dom,parameter);
-        var node = listById_dom;
-        node.nodeValue = doHighLight(parameter, node.nodeValue);
+        var node// = listById_dom;
+        //node.nodeValue = doHighLight(parameter, node.nodeValue);
 
         while (node = listById_dom.nextNode()) {
           node.nodeValue = doHighLight(parameter, node.nodeValue);
