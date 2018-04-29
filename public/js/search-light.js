@@ -27,8 +27,8 @@ var highLightAllChildsTexts = function(dom,parameter){
 
     if(dom.nodeType==3 && dom.nodeValue!=''){
 
-      dom.innerHTML = doHighLight(parameter, dom.nodeValue);
-      alert("nodevalue:" +  dom.innerHTML);
+      dom.nodeValue = doHighLight(parameter, dom.nodeValue);
+      alert("nodevalue:" +  dom.nodeValue);
     }
     
     if(dom.hasChildNodes()){
