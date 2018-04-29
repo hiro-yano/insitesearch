@@ -10,60 +10,28 @@ $(function () {
 
 var load_html_and_insert = function (insert_info_arr, parameter){
 
-        //var listById_innerHTML = $(document).find("#" + insert_info_arr[1])[0].innerHTML;
-        //var parser = new DOMParser();
-        //var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
-        //var listById_dom = $.parseHTML(listById_innerHTML);
-
-//printDom(listById_dom);
-
-        //var resultListById_dom = document.createElement(listById_dom.tagName);
-        highLightAllChildsTexts($(document).find("#" + insert_info_arr[1])[0],parameter);
-        //var node = listById_dom;
-        //node.nodeValue = doHighLight(parameter, node.nodeValue);
-/*
-        while (listById_dom) {
-          
-          if(listById_dom.nodeValue!=null){
-            alert(":" + listById_dom.nodeValue);
-            listById_dom.nodeValue = doHighLight(parameter, listById_dom.nodeValue);
-          }
-          listById_dom = listById_dom.nextSibling;
-          alert("next:" + listById_dom.nodeValue);
-        }*/
-        //alert("result:" + listById_dom.innerHTML);
-        //printDom(listById_dom);
+        var listById_dom = $(document).find("#" + insert_info_arr[1])[0];
+        highLightAllChildsTexts(listById_dom,parameter);
 
         $("#" + insert_info_arr[0]).empty().append(listById_dom);
-        //$("#" + insert_info_arr[0]).append(listById_dom);
-        //$("#" + insert_info_arr[0]).empty().append(node);
-
 };
 
 
 function highLightAllChildsTexts(dom,parameter){
     if(!dom || !parameter) return;
 
-    //var textNodeHilighted;
-
     if(dom.nodeType==3 && dom.nodeValue!=''){
-      //dom.nodeValue = document.createTextNode(doHighLight(parameter, dom.nodeValue));
-      //dom.nodeValue = doHighLight(parameter, dom.nodeValue);
-      //alert("nodevalue:" + dom.nodeValue);
+
       dom.innerHTML = doHighLight(parameter, dom.nodeValue);
       alert("nodevalue:" +  dom.innerHTML);
-      //appendChildFn(textNodeHilighted);
     }
     
     if(dom.hasChildNodes()){
       
       var i;
-      //var childElement;
 
       for(i = 0; i< dom.childNodes.length; i++){
-        //alert("child[" + i + "]:" + dom.childNodes[i].nodeValue);
-        //childElement = document.createElement(dom.childNodes[i].tagName);
-        //appendChildFn(childElement);
+
         highLightAllChildsTexts(dom.childNodes.item(i),parameter);
       }
     }
