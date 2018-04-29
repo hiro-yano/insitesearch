@@ -10,14 +10,15 @@ $(function () {
 
 var load_html_and_insert = function (insert_info_arr, parameter){
 
-        var listById_innerHTML = $(document).find("#" + insert_info_arr[1])[0].innerHTML;
-        var parser = new DOMParser();
-        var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
+        //var listById_innerHTML = $(document).find("#" + insert_info_arr[1])[0].innerHTML;
+        //var parser = new DOMParser();
+        //var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
+        //var listById_dom = $.parseHTML(listById_innerHTML);
 
 //printDom(listById_dom);
 
         //var resultListById_dom = document.createElement(listById_dom.tagName);
-        highLightAllChildsTexts(listById_dom,parameter);
+        highLightAllChildsTexts($(document).find("#" + insert_info_arr[1])[0],parameter);
         //var node = listById_dom;
         //node.nodeValue = doHighLight(parameter, node.nodeValue);
 /*
