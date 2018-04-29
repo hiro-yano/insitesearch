@@ -13,7 +13,7 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         var listById_dom = $(document).find("#" + insert_info_arr[1])[0];
         highLightAllChildsTexts(listById_dom,parameter);
 
-        $("#" + insert_info_arr[0]).empty().append(listById_dom);
+        $("#" + insert_info_arr[0]).append(listById_dom);
 };
 
 
