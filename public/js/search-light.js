@@ -28,7 +28,7 @@ var highLightAllChildsTexts = function(dom,parameter){
 
     if(dom.nodeType==3 && dom.nodeValue!=''){
 
-      dom = doHighLightDOM(parameter, dom.nodeValue);
+      dom.nodeValue = doHighLight(parameter, dom.nodeValue);
       alert("nodevalue:" +  dom.innerHTML);
       return;
 
