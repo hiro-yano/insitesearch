@@ -50,8 +50,8 @@ function highLightAllChildsTexts(dom,parameter){
       //dom.nodeValue = document.createTextNode(doHighLight(parameter, dom.nodeValue));
       //dom.nodeValue = doHighLight(parameter, dom.nodeValue);
       //alert("nodevalue:" + dom.nodeValue);
-      dom = $.parseHTML(doHighLight(parameter, dom.nodeValue));
-      alert("nodevalue:" + dom.nodeValue);
+      dom.innerHTML = doHighLight(parameter, dom.nodeValue);
+      alert("nodevalue:" +  dom.innerHTML);
       //appendChildFn(textNodeHilighted);
     }
     
