@@ -13,7 +13,8 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         var listById_dom = $(document).find("#" + insert_info_arr[1])[0];
         listById_dom = highLightAllChildsTexts(listById_dom,parameter);
 
-        printDom(listById_dom);
+        //printDom(listById_dom);
+        alert("result:" + listById_dom.innerHTML)
 
         //$("#" + insert_info_arr[0]).append(listById_dom);
 
@@ -27,8 +28,8 @@ var highLightAllChildsTexts = function(dom,parameter){
 
     if(dom.nodeType==3 && dom.nodeValue!=''){
 
-      dom.nodeValue = doHighLight(parameter, dom.nodeValue);
-      alert("nodevalue:" +  dom.nodeValue);
+      dom.innerHTML = doHighLight(parameter, dom.nodeValue);
+      alert("nodevalue:" +  dom.innerHTML);
     }
     
     if(dom.hasChildNodes()){
