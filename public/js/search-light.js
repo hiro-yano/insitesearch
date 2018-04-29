@@ -15,7 +15,7 @@ var load_html_and_insert = function (insert_info_arr, parameter){
 
         printDom(listById_dom);
 
-        $("#" + insert_info_arr[0]).empty().append(listById_dom);
+        $("#" + insert_info_arr[0]).append(listById_dom);
 };
 
 
