@@ -18,7 +18,7 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         //$("#" + insert_info_arr[0]).append(listById_dom);
 
         var elem = document.getElementById(insert_info_arr[0]);
-        elem.innerHTML = listById_dom;
+        elem.innerHTML = listById_dom.innerHTML;
 };
 
 
