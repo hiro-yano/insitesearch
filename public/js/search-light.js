@@ -30,6 +30,7 @@ var highLightAllChildsTexts = function(dom,parameter){
 
       dom = doHighLightDOM(parameter, dom.nodeValue);
       alert("nodevalue:" +  dom.innerHTML);
+      return;
     }
     
     if(dom.hasChildNodes()){
