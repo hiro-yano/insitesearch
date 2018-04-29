@@ -34,7 +34,7 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         //alert("result:" + listById_dom.innerHTML);
         //printDom(listById_dom);
 
-        $("#" + insert_info_arr[0]).append(listById_dom);
+        $("#" + insert_info_arr[0]).empty().append(listById_dom);
         //$("#" + insert_info_arr[0]).append(listById_dom);
         //$("#" + insert_info_arr[0]).empty().append(node);
 
