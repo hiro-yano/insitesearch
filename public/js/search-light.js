@@ -48,7 +48,7 @@ function printDom(dom){
     }
 
     if(dom.nodeType==3){
-      alert("print dom value:" + dom.nodeValue);
+      alert("print dom value:" + dom.innerHTML);
     }
     
     if(dom.hasChildNodes()){
