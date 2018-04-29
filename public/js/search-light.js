@@ -95,7 +95,7 @@ var doHighLight = function(searchStr, str) {
 
 var doHighLightDOM = function(searchStr, str) {
 
-    var elm_topdiv = document.createElement('div');
+    var elem_topdiv = document.createElement('div');
 
     if (!searchStr || !str) return elem_topdiv;
  
@@ -109,12 +109,10 @@ var doHighLightDOM = function(searchStr, str) {
     while (pos !== -1) {
         elem_topdiv.appendChild(document.createTextNode(rest_of_string.slice(0, pos)));
 
-        var elm_span_highlight = document.createElement('span');
+        var elem_span_highlight = document.createElement('span');
         elem_span_highlight.className = "highlight"
         elem_span_highlight.appendChild(document.createTextNode(rest_of_string.slice(pos, pos + searchStrLen)));
         elem_topdiv.appendChild(elem_span_highlight);
-        
-        elem_topdiv.appendChild(document.createTextNode(rest_of_string.slice(pos, pos + searchStrLen)));
 
         rest_of_string = rest_of_string.slice(pos + searchStrLen);
 
