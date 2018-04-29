@@ -29,7 +29,7 @@ var highLightAllChildsTexts = function(dom,parameter){
     if(dom.nodeType==3 && dom.nodeValue!=''){
 
       //dom.innerHTML = doHighLight(parameter, dom.nodeValue);
-      dom.appendChild(doHighLightDOM(parameter, dom.nodeValue));
+      dom.innerHTML = doHighLightDOM(parameter, dom.nodeValue).innerHTML;
       alert("nodevalue:" +  dom.innerHTML);
       return dom;
 
@@ -99,9 +99,9 @@ var doHighLight = function(searchStr, str) {
 
 var doHighLightDOM = function(searchStr, str) {
 
-    var elem_topdiv = document.createElement('div');
+    var elem_topspan = document.createElement('span');
 
-    if (!searchStr || !str) return elem_topdiv;
+    if (!searchStr || !str) return elem_topspan;
  
     var lowerSearchStr = searchStr.toLowerCase();
     var pos = str.toLowerCase().indexOf(lowerSearchStr);
@@ -111,19 +111,19 @@ var doHighLightDOM = function(searchStr, str) {
     var rest_of_string = str;
     
     while (pos !== -1) {
-        elem_topdiv.appendChild(document.createTextNode(rest_of_string.slice(0, pos)));
+        elem_topspan.appendChild(document.createTextNode(rest_of_string.slice(0, pos)));
 
         var elem_span_highlight = document.createElement('span');
         elem_span_highlight.className = "highlight"
         elem_span_highlight.appendChild(document.createTextNode(rest_of_string.slice(pos, pos + searchStrLen)));
-        elem_topdiv.appendChild(elem_span_highlight);
+        elem_topspan.appendChild(elem_span_highlight);
 
         rest_of_string = rest_of_string.slice(pos + searchStrLen);
 
         pos = rest_of_string.toLowerCase().indexOf(lowerSearchStr);    
     }
  
-    return elem_topdiv;
+    return elem_topspan;
 };
 
 
