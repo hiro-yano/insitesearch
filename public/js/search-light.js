@@ -28,8 +28,8 @@ var highLightAllChildsTexts = function(dom,parameter){
 
     if(dom.nodeType==3 && dom.nodeValue!=''){
 
-      dom = doHighLightDOM(parameter, dom.nodeValue);
-      alert("nodevalue:" +  dom);
+      dom.innerHTML = doHighLightDOM(parameter, dom.nodeValue);
+      alert("nodevalue:" +  dom.innerHTML);
     }
     
     if(dom.hasChildNodes()){
@@ -100,8 +100,7 @@ var doHighLightDOM = function(searchStr, str) {
     if (!searchStr || !str) return elem_topdiv;
  
     var lowerSearchStr = searchStr.toLowerCase();
-    var lowerStr = str.toLowerCase();
-    var pos = lowerStr.indexOf(lowerSearchStr);
+    var pos = str.toLowerCase().indexOf(lowerSearchStr);
 
     let searchStrLen = searchStr.length;
 
