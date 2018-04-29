@@ -31,19 +31,21 @@ var highLightAllChildsTexts = function(dom,parameter){
       dom = doHighLightDOM(parameter, dom.nodeValue);
       alert("nodevalue:" +  dom.innerHTML);
       return;
+
+    }else{
+
+      if(dom.hasChildNodes()){
+      
+        var i;
+        for(i = 0; i< dom.childNodes.length; i++){
+
+          highLightAllChildsTexts(dom.childNodes.item(i),parameter);
+        }
+      }
+
+      return dom;
     }
     
-    if(dom.hasChildNodes()){
-      
-      var i;
-
-      for(i = 0; i< dom.childNodes.length; i++){
-
-        highLightAllChildsTexts(dom.childNodes.item(i),parameter);
-      }
-    }
-
-    return dom;
 }
 
 function printDom(dom){
