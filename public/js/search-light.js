@@ -28,8 +28,8 @@ var highLightAllChildsTexts = function(dom,parameter){
 
     if(dom.nodeType==3 && dom.nodeValue!=''){
 
-      //dom.innerHTML = doHighLight(parameter, dom.nodeValue);
-      dom.innerHTML = doHighLightDOM(parameter, dom.nodeValue).innerHTML;
+      dom.innerHTML = doHighLight(parameter, dom.nodeValue);
+      //dom.innerHTML = doHighLightDOM(parameter, dom.nodeValue).innerHTML;
       alert("nodevalue:" +  dom.innerHTML);
       return dom;
 
