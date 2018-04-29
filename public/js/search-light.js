@@ -111,7 +111,7 @@ var doHighLightDOM = function(searchStr, str) {
 
         var elm_span_highlight = document.createElement('span');
         elem_span_highlight.className = "highlight"
-        elm_span_highlight.appendChild(document.createTextNode(rest_of_string.slice(pos, pos + searchStrLen)));
+        elem_span_highlight.appendChild(document.createTextNode(rest_of_string.slice(pos, pos + searchStrLen)));
         elem_topdiv.appendChild(elem_span_highlight);
         
         elem_topdiv.appendChild(document.createTextNode(rest_of_string.slice(pos, pos + searchStrLen)));
