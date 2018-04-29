@@ -24,13 +24,14 @@ var load_html_and_insert = function (insert_info_arr, parameter){
 
 
 var highLightAllChildsTexts = function(dom,parameter){
-    if(!dom || !parameter) return;
+    if(!dom || !parameter) return dom;
 
     if(dom.nodeType==3 && dom.nodeValue!=''){
 
-      dom.innerHTML = doHighLight(parameter, dom.nodeValue);
+      //dom.innerHTML = doHighLight(parameter, dom.nodeValue);
+      dom = doHighLightDOM(parameter, dom.nodeValue);
       alert("nodevalue:" +  dom.innerHTML);
-      return;
+      return dom;
 
     }else{
 
