@@ -32,7 +32,7 @@ var load_html_and_insert = function (insert_info_arr, parameter){
           alert("next:" + listById_dom.nodeValue);
         }*/
         //alert("result:" + listById_dom.innerHTML);
-        printDom(listById_dom);
+        //printDom(listById_dom);
 
         $("#" + insert_info_arr[0]).append(listById_dom);
         //$("#" + insert_info_arr[0]).append(listById_dom);
