@@ -42,6 +42,7 @@ var highLightAllChildsTexts = function(dom,parameter){
             dom.innerHTML = doHighLight(parameter, dom.childNodes.item(i).nodeValue);
             alert("nodevalue:" +  dom.innerHTML);
           }
+          alert("test:" + dom.childNodes.item(i));
           highLightAllChildsTexts(dom.childNodes.item(i),parameter);
         }
       }
