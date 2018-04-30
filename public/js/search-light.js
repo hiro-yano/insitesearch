@@ -25,20 +25,23 @@ var load_html_and_insert = function (insert_info_arr, parameter){
 
 var highLightAllChildsTexts = function(dom,parameter){
     if(!dom || !parameter) return dom;
-
+/*
     if(dom.nodeType==3 && dom.nodeValue!=''){
 
       dom.nodeValue = doHighLight(parameter, dom.nodeValue);
       //dom.innerHTML = doHighLightDOM(parameter, dom.nodeValue).innerHTML;
       alert("nodevalue:" +  dom.innerHTML);
 
-    }
+    }*/
 
       if(dom.hasChildNodes()){
       
         var i;
         for(i = 0; i< dom.childNodes.length; i++){
-
+          if(dom.childNodes.item(i).nodeType==3 && dom.childNodes.item(i).nodeValue!=''){
+            dom.innerHTML = doHighLight(parameter, dom.childNodes.item(i).nodeValue);
+            alert("nodevalue:" +  dom.innerHTML);
+          }
           highLightAllChildsTexts(dom.childNodes.item(i),parameter);
         }
       }
