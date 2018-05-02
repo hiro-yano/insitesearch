@@ -28,19 +28,22 @@ var highLightAllChildsTexts = function(dom,parameter){
 
     if(dom.nodeType==3 && dom.nodeValue!=''){
 
-      dom.innerHTML = doHighLight(parameter, dom.nodeValue);
-      //dom.innerHTML = doHighLightDOM(parameter, dom.nodeValue).innerHTML;
-      alert("nodevalue:" +  dom.innerHTML);
-
+      //dom.innerHTML = doHighLight(parameter, dom.nodeValue);
+      return doHighLightDOM(parameter, dom.nodeValue);
+      //alert("nodevalue:" +  dom.innerHTML);
     }
 
       if(dom.hasChildNodes()){
       
         var i;
+        var child;
         for(i = 0; i< dom.childNodes.length; i++){
 
-          alert("test:" + dom.childNodes.item(i).nodeValue);
-          highLightAllChildsTexts(dom.childNodes.item(i),parameter);
+          alert(dom.childNodes.item(i).tagName + "->child:" + dom.childNodes.item(i).nodeValue);
+
+          child = highLightAllChildsTexts(dom.childNodes.item(i),parameter);
+          dom.replaceChild(child, dom.childNodes.item(i));
+
         }
       }
 
