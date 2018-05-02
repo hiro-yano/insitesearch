@@ -11,7 +11,7 @@ $(function () {
         function(strCount){
             totalCount += strCount;
             var e = document.getElementById('search-result-count');
-            e.textContent =  totalCount + ' results';//  文字列設定
+            e.textContent =  totalCount + ' results';
             
         }); 
     }
@@ -19,19 +19,12 @@ $(function () {
 
   if(parameter != ''){
     var e = document.getElementById('search-word');
-    e.textContent =  'Word: ' + parameter;//  文字列設定
+    e.textContent =  'Word: ' + parameter; 
   }
   
 });
 
-/**
- * @brief use Ajax(jQuey) to get external html and extract by id and insert by id.
- *
- * @param html_url url or lelative path or...
- * @param insert_info_arr 2d-array like std::vector<std::array<std::string, 2>>.
- *
- * @return none.
- */
+
 var load_html_and_insert = function (html_url, insert_info_arr, parameter, countResultsFn){
 
     $.ajax(html_url, {
@@ -63,7 +56,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
               elm_topdiv.className = 'card';
               elm_topdiv.id = 'card-hight';
 
-              var elm_subdiv = document.createElement('div');
+              var elm_subdiv = elm_topdiv.cloneNode(false);
               elm_subdiv.className = 'card-body';
 
               var elm_h5 = document.createElement('h5');

@@ -13,7 +13,7 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         var listById_dom = $(document).find("#" + insert_info_arr[1])[0];
         listById_dom = highLightAllChildsTexts(listById_dom,parameter);
 
-        printDom(listById_dom);
+        //printDom(listById_dom);
         alert("result:" + listById_dom.innerHTML);
 
         //$("#" + insert_info_arr[0]).append(listById_dom);
@@ -27,28 +27,29 @@ var highLightAllChildsTexts = function(dom,parameter){
     if(!dom || !parameter) return dom;
 
     if(dom.nodeType==3 && dom.nodeValue!=''){
+      //this element is a textnode
 
-      //dom.innerHTML = doHighLight(parameter, dom.nodeValue);
       return doHighLightDOM(parameter, dom.nodeValue);
       //alert("nodevalue:" +  dom.innerHTML);
-    }
 
+    }else{
+      //this element is not a textnode and has child nodes
       if(dom.hasChildNodes()){
       
         var i;
         var child;
         for(i = 0; i< dom.childNodes.length; i++){
 
-          alert(dom.tagName + "->child:" + dom.childNodes.item(i).nodeValue);
+          //alert(dom.tagName + "->child:" + dom.childNodes.item(i).nodeValue);
 
           child = highLightAllChildsTexts(dom.childNodes.item(i),parameter);
           dom.replaceChild(child, dom.childNodes.item(i));
 
         }
       }
-
+      //this element is not a textnode and (has or don't have child nodes)
       return dom;
-    
+    } 
     
 }
 
@@ -107,11 +108,16 @@ var doHighLightDOM = function(searchStr, str) {
     if (!searchStr || !str) return elem_topspan;
  
     var lowerSearchStr = searchStr.toLowerCase();
-    var pos = str.toLowerCase().indexOf(lowerSearchStr);
+    var pos = -1;
+    pos = str.toLowerCase().indexOf(lowerSearchStr);
 
     let searchStrLen = searchStr.length;
 
     var rest_of_string = str;
+
+    var tmp_elem_span_highlight = document.createElement('span');
+    tmp_elem_span_highlight.className = "highlight";
+
 
     if (pos == -1){
       return elem_topspan.appendChild(document.createTextNode(str));
@@ -120,8 +126,7 @@ var doHighLightDOM = function(searchStr, str) {
     while (pos !== -1) {
         elem_topspan.appendChild(document.createTextNode(rest_of_string.slice(0, pos)));
 
-        var elem_span_highlight = document.createElement('span');
-        elem_span_highlight.className = "highlight"
+        var elem_span_highlight = tmp_elem_span_highlight.cloneNode(false);
         elem_span_highlight.appendChild(document.createTextNode(rest_of_string.slice(pos, pos + searchStrLen)));
         elem_topspan.appendChild(elem_span_highlight);
 
