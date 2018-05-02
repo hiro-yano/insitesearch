@@ -146,7 +146,7 @@ function enter(code)
   //エンターキー押下なら
   if(13 === code)
   {
-    var para = '?' + document.getElementById('search-text').value;
+    var para = '?' + encodeURIComponent(document.getElementById('search-text').value);
     window.location.href = 'searchresult.html' + para; // 通常の遷移
   }
 }
@@ -158,7 +158,7 @@ function getParameter(){
  
   // URLにパラメータが存在する場合
   if(urlParam) {
-    return decodeURI(urlParam).trim();
+    return decodeURIComponent(urlParam).trim();
   }else{
     return '';
   }
