@@ -129,6 +129,8 @@ var doHighLightDOM = function(searchStr, str) {
 
         pos = rest_of_string.toLowerCase().indexOf(lowerSearchStr);    
     }
+
+    elem_topspan.appendChild(document.createTextNode(rest_of_string));
  
     return elem_topspan;
 };
