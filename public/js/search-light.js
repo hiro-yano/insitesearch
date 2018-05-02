@@ -10,11 +10,14 @@ $(function () {
 
 var load_html_and_insert = function (insert_info_arr, parameter){
 
-        var listById_dom = $(document).find("#" + insert_info_arr[1])[0];
-        listById_dom = highLightAllChildsTexts(listById_dom,parameter);
+        //var listById_dom = $(document).find("#" + insert_info_arr[1])[0];
+        var listById_dom = document.getElementById(insert_info_arr[1]);
+        if(listById_dom != null){
+          listById_dom = highLightAllChildsTexts(listById_dom,parameter);
 
-        var elem = document.getElementById(insert_info_arr[0]);
-        elem.appendChild(listById_dom);
+          var elem = document.getElementById(insert_info_arr[0]);
+          elem.appendChild(listById_dom);
+        }
 };
 
 
