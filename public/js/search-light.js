@@ -39,7 +39,7 @@ var highLightAllChildsTexts = function(dom,parameter){
         var child;
         for(i = 0; i< dom.childNodes.length; i++){
 
-          alert(dom.childNodes.item(i).tagName + "->child:" + dom.childNodes.item(i).nodeValue);
+          alert(dom.tagName + "->child:" + dom.childNodes.item(i).nodeValue);
 
           child = highLightAllChildsTexts(dom.childNodes.item(i),parameter);
           dom.replaceChild(child, dom.childNodes.item(i));
