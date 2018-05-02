@@ -151,20 +151,17 @@ var getAllChildsTexts = function(child,createResult){
 
 function enter(code)
 {
-  //エンターキー押下なら
   if(13 === code)
   {
     var para = '?' + encodeURIComponent(document.getElementById('search-text').value);
-    window.location.href = 'searchresult.html' + para; // 通常の遷移
+    window.location.href = 'searchresult.html' + para;
   }
 }
 
 
 function getParameter(){
-  // URLのパラメータを取得
   var urlParam = location.search.substring(1);
  
-  // URLにパラメータが存在する場合
   if(urlParam) {
     return decodeURIComponent(urlParam).trim();
   }else{

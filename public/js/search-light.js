@@ -13,11 +13,6 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         var listById_dom = $(document).find("#" + insert_info_arr[1])[0];
         listById_dom = highLightAllChildsTexts(listById_dom,parameter);
 
-        //printDom(listById_dom);
-        //alert("result:" + listById_dom.innerHTML);
-
-        //$("#" + insert_info_arr[0]).append(listById_dom);
-
         var elem = document.getElementById(insert_info_arr[0]);
         elem.appendChild(listById_dom);
 };
@@ -30,8 +25,7 @@ var highLightAllChildsTexts = function(dom,parameter){
       //this element is a textnode
 
       return doHighLightDOM(parameter, dom.nodeValue);
-      //alert("nodevalue:" +  dom.innerHTML);
-
+      
     }else{
       //this element is not a textnode and has child nodes
       if(dom.hasChildNodes()){
@@ -39,8 +33,6 @@ var highLightAllChildsTexts = function(dom,parameter){
         var i;
         var child;
         for(i = 0; i< dom.childNodes.length; i++){
-
-          //alert(dom.tagName + "->child:" + dom.childNodes.item(i).nodeValue);
 
           child = highLightAllChildsTexts(dom.childNodes.item(i),parameter);
           dom.replaceChild(child, dom.childNodes.item(i));
@@ -52,54 +44,6 @@ var highLightAllChildsTexts = function(dom,parameter){
     } 
     
 }
-
-function printDom(dom){
-    if(!dom) return;
-
-    if(dom.nodeType==1){
-      alert("print dom value:" + dom.tagName);
-    }
-
-    if(dom.nodeType==3){
-      alert("print dom value:" + dom.innerHTML);
-    }
-    
-    if(dom.hasChildNodes()){
-      
-      var i;
-
-      for(i = 0; i< dom.childNodes.length; i++){
-        printDom(dom.childNodes.item(i));
-      }
-    }
-
-}
-
-var doHighLight = function(searchStr, str) {
-
-
-    if (!searchStr || !str) return 0;
- 
-    var lowerSearchStr = searchStr.toLowerCase();
-    var lowerStr = str.toLowerCase();
-    var pos = lowerStr.indexOf(lowerSearchStr);
-    var highLitedStr = str;
-    let spanHead = '<span class="highlight">';
-    let spanTail = '</span>';
-    let spanLen = spanHead.length + spanTail.length;
-    let searchStrLen = searchStr.length;
-    
-    while (pos !== -1) {
-
-        highLitedStr = [highLitedStr.slice(0, pos), spanHead , 
-                        highLitedStr.slice(pos, pos + searchStrLen), 
-                        spanTail,highLitedStr.slice(pos + searchStrLen) ].join('');
-
-        pos = highLitedStr.toLowerCase().indexOf(lowerSearchStr, pos + spanLen + 1);    
-    }
- 
-    return highLitedStr;
-};
 
 var doHighLightDOM = function(searchStr, str) {
 
@@ -143,20 +87,17 @@ var doHighLightDOM = function(searchStr, str) {
 
 function enter(code)
 {
-  //エンターキー押下なら
   if(13 === code)
   {
     var para = '?' + encodeURIComponent(document.getElementById('search-text').value);
-    window.location.href = 'searchresult.html' + para; // 通常の遷移
+    window.location.href = 'searchresult.html' + para;
   }
 }
 
 
 function getParameter(){
-  // URLのパラメータを取得
   var urlParam = location.search.substring(1);
- 
-  // URLにパラメータが存在する場合
+
   if(urlParam) {
     return decodeURIComponent(urlParam).trim();
   }else{
