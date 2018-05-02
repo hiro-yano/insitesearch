@@ -14,7 +14,7 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         listById_dom = highLightAllChildsTexts(listById_dom,parameter);
 
         //printDom(listById_dom);
-        alert("result:" + listById_dom.innerHTML);
+        //alert("result:" + listById_dom.innerHTML);
 
         //$("#" + insert_info_arr[0]).append(listById_dom);
 
