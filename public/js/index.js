@@ -63,7 +63,7 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
               elm_h5.className = 'card-title';
 
               var elm_highLitedAhref = document.createElement('a');
-              elm_highLitedAhref.setAttribute('href', html_url + "?" + parameter);
+              elm_highLitedAhref.setAttribute('href', html_url + "?" + encodeURIComponent(parameter));
               elm_highLitedAhref.innerHTML = doHighLight(parameter,title);
 
               elm_h5.appendChild(elm_highLitedAhref);
