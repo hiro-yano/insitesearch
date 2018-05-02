@@ -112,6 +112,10 @@ var doHighLightDOM = function(searchStr, str) {
     let searchStrLen = searchStr.length;
 
     var rest_of_string = str;
+
+    if (pos == -1){
+      return elem_topspan.appendChild(document.createTextNode(str));
+    }
     
     while (pos !== -1) {
         elem_topspan.appendChild(document.createTextNode(rest_of_string.slice(0, pos)));
