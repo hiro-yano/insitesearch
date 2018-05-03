@@ -143,8 +143,8 @@ function laod_html_and_insert_no_jquery_success(resp, insert_info_arr, parameter
   var out_html = parser.parseFromString(resp, "text/html");
   var title = out_html.getElementsByTagName("title")[0].innerHTML;
 
-  //var listById_innerHTML = $(out_html).find("#" + insert_info_arr[1])[0].innerHTML;
-  var listById_innerHTML = out_html.getElementById(insert_info_arr[1])[0].innerHTML;
+  var listById_innerHTML = $(out_html).find("#" + insert_info_arr[1])[0].innerHTML;
+  //var listById_innerHTML = out_html.getElementById(insert_info_arr[1])[0].innerHTML;
   var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
 
   var listById = '';
@@ -184,10 +184,10 @@ function laod_html_and_insert_no_jquery_success(resp, insert_info_arr, parameter
     elm_subdiv.appendChild(elm_p);
     elm_topdiv.appendChild(elm_subdiv);
 
-    var result_list = document.getElementById(insert_info_arr[0]);
-    result_list.appendChild(elm_topdiv);
+    //var result_list = document.getElementById(insert_info_arr[0]);
+    //result_list.appendChild(elm_topdiv);
 
-    //$("#" + insert_info_arr[0]).append(elm_topdiv);
+    $("#" + insert_info_arr[0]).append(elm_topdiv);
 
   }
   countResultsFn(str_count);
