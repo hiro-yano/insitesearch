@@ -115,7 +115,7 @@ var load_html_and_insert_no_jquery = function (html_url, insert_info_arr, parame
           var resp = this.responseText;
 
           var parser = new DOMParser();
-          var out_html = parser.parseFromString(data, "text/html");
+          var out_html = parser.parseFromString(resp, "text/html");
           var title = out_html.getElementsByTagName("title")[0].innerHTML;
 
           var listById_innerHTML = $(out_html).find("#" + insert_info_arr[1])[0].innerHTML;
