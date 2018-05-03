@@ -1,3 +1,4 @@
+/*
 $(function () {
 
   var parameter = getParameter();
@@ -6,7 +7,15 @@ $(function () {
       load_html_and_insert(["target-area-list", "target-area-list"], parameter); 
   }
   
-});
+});*/
+
+window.addEventListener('DOMContentLoaded', function() {
+  var parameter = getParameter();
+
+  if(parameter != ''){
+      load_html_and_insert(["target-area-list", "target-area-list"], parameter); 
+  }
+})
 
 var load_html_and_insert = function (insert_info_arr, parameter){
 
