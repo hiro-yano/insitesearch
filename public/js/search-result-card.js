@@ -63,14 +63,30 @@ var load_html_and_insert = function (html_url, insert_info_arr, parameter, count
 
         } else {
           // Error :(
-          var txt = "<p>textStatus:"+ this.statusText + "</p>" +
-                "<p>status:"+ this.status + "</p>" +
-                "<p>responseText : </p><div>" + this.responseText +
-                "</div>";
 
           var result_list = document.getElementById(insert_info_arr[0]);
-          var textElement = document.createTextNode(txt);
-          result_list.appendChild(textElement);
+
+          var elem_p_statusText = document.createElement("p");
+          var elem_txt_statusText = document.createTextNode("textStatus:"+ this.statusText);
+
+          elem_p_statusText.appendChild(elem_txt_statusText);
+
+          var elem_p_status = elem_p_statusText.cloneNode(false);
+          var elem_txt_status = document.createTextNode("status:"+ this.status);
+          elem_p_status.appendChild(elem_txt_status);
+
+          var elem_p_responseText = elem_p_statusText.cloneNode(false);
+          var elem_txt_responseText_detail = document.createTextNode("responseText : ");
+          elem_p_responseText.appendChild(elem_txt_responseText_detail);
+
+          var elem_div = document.createElement("div");
+          var elem_txt_responseText = document.createTextNode(this.responseText);
+          elem_div.appendChild(elem_txt_responseText);
+
+          result_list.appendChild(elem_p_statusText);
+          result_list.appendChild(elem_p_status);
+          result_list.appendChild(elem_p_responseText);
+          result_list.appendChild(elem_div);
 
 
         }
