@@ -106,7 +106,7 @@ var load_html_and_insert_no_jquery = function (html_url, insert_info_arr, parame
 
     //IE8+
     var request = new XMLHttpRequest();
-    request.open('GET', html_url , true);
+    request.open('GET', '/' + html_url , true);
 
     request.onreadystatechange = function() {
       if (this.readyState === 4) {
@@ -132,10 +132,10 @@ var load_html_and_insert_no_jquery = function (html_url, insert_info_arr, parame
 
         }
       }
-  };
+    };
 
-  request.send();
-  request = null;
+    request.send();
+    request = null;
 
 };
 
