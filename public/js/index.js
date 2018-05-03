@@ -7,22 +7,22 @@ $(function () {
 　var i;
   if(parameter != ''){
     for(i = 0; i < pageList.length; ++i){
-      
+      /*
       load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter, 
         function(strCount){
             totalCount += strCount;
             var e = document.getElementById('search-result-count');
             e.textContent =  totalCount + ' results';
             
-        }); 
-/*
+        }); */
+
       load_html_and_insert_no_jquery(pageList[i] + '.html', ["list", "target-area-list"], parameter, 
         function(strCount){
             totalCount += strCount;
             var e = document.getElementById('search-result-count');
             e.textContent =  totalCount + ' results';
             
-        });*/
+        });
     }
   }
 
@@ -106,7 +106,7 @@ var load_html_and_insert_no_jquery = function (html_url, insert_info_arr, parame
 
     //IE8+
     var request = new XMLHttpRequest();
-    request.open('GET', html_url , true);
+    request.open('GET', '/' + html_url , true);
 
     request.onreadystatechange = function() {
       if (this.readyState === 4) {
