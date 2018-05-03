@@ -124,9 +124,9 @@ var load_html_and_insert_no_jquery = function (html_url, insert_info_arr, parame
                 "</div>";
           //$("#" + insert_info_arr[0]).append(txt);
 
-          var listById_innerHTML = document.getElementById(insert_info_arr[0]);
+          var result_list = document.getElementById(insert_info_arr[0]);
           var textElement = document.createTextNode(txt);
-          listById_innerHTML.appendChild(textElement);
+          result_list.appendChild(textElement);
 
         }
       }
@@ -184,8 +184,8 @@ function laod_html_and_insert_no_jquery_success(resp, insert_info_arr, parameter
     elm_subdiv.appendChild(elm_p);
     elm_topdiv.appendChild(elm_subdiv);
 
-    var listById_innerHTML = document.getElementById(insert_info_arr[0]);
-    listById_innerHTML.appendChild(elm_topdiv);
+    var result_list = document.getElementById(insert_info_arr[0]);
+    result_list.appendChild(elm_topdiv);
 
     //$("#" + insert_info_arr[0]).append(elm_topdiv);
 
