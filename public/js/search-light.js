@@ -1,13 +1,4 @@
-/*
-$(function () {
 
-  var parameter = getParameter();
-
-  if(parameter != ''){
-      load_html_and_insert(["target-area-list", "target-area-list"], parameter); 
-  }
-  
-});*/
 
 window.addEventListener('DOMContentLoaded', function() {
   var parameter = getParameter();
@@ -19,7 +10,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
 var load_html_and_insert = function (insert_info_arr, parameter){
 
-        //var listById_dom = $(document).find("#" + insert_info_arr[1])[0];
         var listById_dom = document.getElementById(insert_info_arr[1]);
         if(listById_dom != null){
           listById_dom = highLightAllChildsTexts(listById_dom,parameter);

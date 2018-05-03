@@ -1,39 +1,3 @@
-/*
-$(function () {
-
-  var parameter = getParameter();
-  var totalCount = 0;
-
-  var pageList = ['index', 'orders', 'products', 'customers', 'reports', 'integrations'];
-　var i;
-  if(parameter != ''){
-    for(i = 0; i < pageList.length; ++i){
-      
-      load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter, 
-        function(strCount){
-            totalCount += strCount;
-            var e = document.getElementById('search-result-count');
-            e.textContent =  totalCount + ' results';
-            
-        }); 
-
-      load_html_and_insert_no_jquery(pageList[i] + '.html', ["list", "target-area-list"], parameter, 
-        function(strCount){
-            totalCount += strCount;
-            var e = document.getElementById('search-result-count');
-            e.textContent =  totalCount + ' results';
-            
-        });
-    }
-  }
-
-  if(parameter != ''){
-    var e = document.getElementById('search-word');
-    e.textContent =  'Word: ' + parameter; 
-  }
-  
-});
-*/
 
 window.addEventListener('DOMContentLoaded', function() {
   var parameter = getParameter();
@@ -43,16 +7,8 @@ window.addEventListener('DOMContentLoaded', function() {
 　var i;
   if(parameter != ''){
     for(i = 0; i < pageList.length; ++i){
-      /*
-      load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter, 
-        function(strCount){
-            totalCount += strCount;
-            var e = document.getElementById('search-result-count');
-            e.textContent =  totalCount + ' results';
-            
-        }); */
 
-      load_html_and_insert_no_jquery(pageList[i] + '.html', ["list", "target-area-list"], parameter, 
+      load_html_and_insert(pageList[i] + '.html', ["list", "target-area-list"], parameter, 
         function(strCount){
             totalCount += strCount;
             var e = document.getElementById('search-result-count');
@@ -68,76 +24,7 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 })
 
-
 var load_html_and_insert = function (html_url, insert_info_arr, parameter, countResultsFn){
-
-    $.ajax(html_url, {
-        timeout : 1000,
-        datatype: 'html'
-    }).then(function(data){
-
-        var parser = new DOMParser();
-        var out_html = parser.parseFromString(data, "text/html");
-        var title = out_html.getElementsByTagName("title")[0].innerHTML;
-
-        var listById_innerHTML = $(out_html).find("#" + insert_info_arr[1])[0].innerHTML;
-        var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
-
-        var listById = '';
-        if (listById_dom.hasChildNodes()) {
-          getAllChildsTexts(listById_dom.childNodes, function(childTextContent){
-            listById = listById + childTextContent;
-          });
-        }
-        
-        var str_count = 0;
-        str_count += strCount(parameter,listById);
-        str_count += strCount(parameter,title);
-
-        if ( str_count != 0) {
-
-              var elm_topdiv = document.createElement('div');
-              elm_topdiv.className = 'card';
-              elm_topdiv.id = 'card-hight';
-
-              var elm_subdiv = elm_topdiv.cloneNode(false);
-              elm_subdiv.className = 'card-body';
-
-              var elm_h5 = document.createElement('h5');
-              elm_h5.className = 'card-title';
-
-              var elm_highLitedAhref = document.createElement('a');
-              elm_highLitedAhref.setAttribute('href', html_url + "?" + encodeURIComponent(parameter));
-              elm_highLitedAhref.innerHTML = doHighLight(parameter,title);
-
-              elm_h5.appendChild(elm_highLitedAhref);
-
-              var elm_p = document.createElement('p');
-              elm_p.className = 'card-text';
-              elm_p.innerHTML = doHighLight(parameter,listById);
-
-              elm_subdiv.appendChild(elm_h5);
-              elm_subdiv.appendChild(elm_p);
-              elm_topdiv.appendChild(elm_subdiv);
-
-              $("#" + insert_info_arr[0]).append(elm_topdiv);
-
-        }
-        countResultsFn(str_count);
-
-    }, function(jqXHR, textStatus) {
-        
-        var txt = "<p>textStatus:"+ textStatus + "</p>" +
-                "<p>status:"+ jqXHR.status + "</p>" +
-                "<p>responseText : </p><div>" + jqXHR.responseText +
-                "</div>";
-        $("#" + insert_info_arr[0]).append(txt);
-        
-    });
-
-};
-
-var load_html_and_insert_no_jquery = function (html_url, insert_info_arr, parameter, countResultsFn){
 
     //IE8+
     var request = new XMLHttpRequest();
@@ -157,8 +44,6 @@ var load_html_and_insert_no_jquery = function (html_url, insert_info_arr, parame
                 "<p>status:"+ this.status + "</p>" +
                 "<p>responseText : </p><div>" + this.responseText +
                 "</div>";
-          //$("#" + insert_info_arr[0]).append(txt);
-
 
           var result_list = document.getElementById(insert_info_arr[0]);
           var textElement = document.createTextNode(txt);
@@ -180,7 +65,6 @@ function laod_html_and_insert_no_jquery_success(resp, html_url, insert_info_arr,
   var out_html = parser.parseFromString(resp, "text/html");
   var title = out_html.getElementsByTagName("title")[0].innerHTML;
 
-  //var listById_innerHTML = $(out_html).find("#" + insert_info_arr[1])[0].innerHTML;
   var listById_innerHTML = out_html.getElementById(insert_info_arr[1]).innerHTML;
   var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
 
@@ -223,8 +107,6 @@ function laod_html_and_insert_no_jquery_success(resp, html_url, insert_info_arr,
 
     var result_list = document.getElementById(insert_info_arr[0]);
     result_list.appendChild(elm_topdiv);
-
-    //$("#" + insert_info_arr[0]).append(elm_topdiv);
 
   }
   countResultsFn(str_count);
