@@ -106,7 +106,7 @@ var load_html_and_insert_no_jquery = function (html_url, insert_info_arr, parame
 
     //IE8+
     var request = new XMLHttpRequest();
-    request.open('GET', '/' + html_url , true);
+    request.open('GET', html_url , true);
 
     request.onreadystatechange = function() {
       if (this.readyState === 4) {
@@ -114,7 +114,7 @@ var load_html_and_insert_no_jquery = function (html_url, insert_info_arr, parame
           // Success!
           var resp = this.responseText;
 
-          laod_html_and_insert_no_jquery_success(resp, insert_info_arr, parameter, countResultsFn);
+          laod_html_and_insert_no_jquery_success(resp, html_url, insert_info_arr, parameter, countResultsFn);
 
         } else {
           // Error :(
@@ -139,7 +139,7 @@ var load_html_and_insert_no_jquery = function (html_url, insert_info_arr, parame
 
 };
 
-function laod_html_and_insert_no_jquery_success(resp, insert_info_arr, parameter, countResultsFn){
+function laod_html_and_insert_no_jquery_success(resp, html_url, insert_info_arr, parameter, countResultsFn){
   
   var parser = new DOMParser();
   var out_html = parser.parseFromString(resp, "text/html");
