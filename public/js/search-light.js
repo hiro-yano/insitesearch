@@ -26,18 +26,15 @@ window.addEventListener('DOMContentLoaded', function() {
   var parameter = getParameter();
 
   if(parameter != ''){
-      load_html_and_insert(["target-area-list", "target-area-list"], parameter); 
+      load_html_and_insert("target-area-list", parameter); 
   }
 })
 
-var load_html_and_insert = function (insert_info_arr, parameter){
+var load_html_and_insert = function (insert_info, parameter){
 
-        var listById_dom = document.getElementById(insert_info_arr[1]);
+        var listById_dom = document.getElementById(insert_info);
         if(listById_dom != null){
           listById_dom = highLightAllChildsTexts(listById_dom,parameter);
-
-          //var elem = document.getElementById(insert_info_arr[0]);
-          //elem.appendChild(listById_dom);
         }
 };
 
