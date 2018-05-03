@@ -118,8 +118,8 @@ var load_html_and_insert_no_jquery = function (html_url, insert_info_arr, parame
           var out_html = parser.parseFromString(data, "text/html");
           var title = out_html.getElementsByTagName("title")[0].innerHTML;
 
-          //var listById_innerHTML = $(out_html).find("#" + insert_info_arr[1])[0].innerHTML;
-          var listById_innerHTML = out_html.getElementById(insert_info_arr[1])[0].innerHTML;
+          var listById_innerHTML = $(out_html).find("#" + insert_info_arr[1])[0].innerHTML;
+          //var listById_innerHTML = out_html.getElementById(insert_info_arr[1])[0].innerHTML;
           var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
 
           var listById = '';
@@ -159,10 +159,10 @@ var load_html_and_insert_no_jquery = function (html_url, insert_info_arr, parame
               elm_subdiv.appendChild(elm_p);
               elm_topdiv.appendChild(elm_subdiv);
 
-              var listById_innerHTML = document.getElementById(insert_info_arr[0]);
-              listById_innerHTML.appendChild(elm_topdiv);
+              //var listById_innerHTML = document.getElementById(insert_info_arr[0]);
+              //listById_innerHTML.appendChild(elm_topdiv);
 
-              //$("#" + insert_info_arr[0]).append(elm_topdiv);
+              $("#" + insert_info_arr[0]).append(elm_topdiv);
 
           }
           countResultsFn(str_count);
