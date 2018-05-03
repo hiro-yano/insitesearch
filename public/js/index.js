@@ -146,7 +146,7 @@ function laod_html_and_insert_no_jquery_success(resp, html_url, insert_info_arr,
   var title = out_html.getElementsByTagName("title")[0].innerHTML;
 
   //var listById_innerHTML = $(out_html).find("#" + insert_info_arr[1])[0].innerHTML;
-  var listById_innerHTML = out_html.getElementById(insert_info_arr[1])[0].innerHTML;
+  var listById_innerHTML = out_html.getElementById(insert_info_arr[1]).innerHTML;
   var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
 
   var listById = '';
