@@ -36,8 +36,8 @@ var load_html_and_insert = function (insert_info_arr, parameter){
         if(listById_dom != null){
           listById_dom = highLightAllChildsTexts(listById_dom,parameter);
 
-          var elem = document.getElementById(insert_info_arr[0]);
-          elem.appendChild(listById_dom);
+          //var elem = document.getElementById(insert_info_arr[0]);
+          //elem.appendChild(listById_dom);
         }
 };
 
