@@ -122,11 +122,13 @@ var load_html_and_insert_no_jquery = function (html_url, insert_info_arr, parame
                 "<p>status:"+ this.status + "</p>" +
                 "<p>responseText : </p><div>" + this.responseText +
                 "</div>";
-          //$("#" + insert_info_arr[0]).append(txt);
+          $("#" + insert_info_arr[0]).append(txt);
 
+/*
           var result_list = document.getElementById(insert_info_arr[0]);
           var textElement = document.createTextNode(txt);
           result_list.appendChild(textElement);
+*/
 
         }
       }
