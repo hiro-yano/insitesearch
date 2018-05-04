@@ -12,7 +12,8 @@ bootstrap.min.js
 public/js/search-result-card.js:
 * To search through a site and list search results in card forms.
 * window.addEventListner:
- var pageList = ['index', 'orders', ...] <- lists names of search target pages that are html files and exclude a file extensions ".html". 
+ var pageList = ['index', 'orders', ...] 
+ ... lists names of search target pages that are html files and exclude a file extension ".html". 
 
 public/js/search-light.js:
 * To highlight a keyword.
