@@ -5,9 +5,6 @@ Javascript to search a keyword within a site and list search results.
 ## Demo
 [Demo Site](https://insitesearch.herokuapp.com/index.html)
 
-## Requirement
-bootstrap.min.js
-
 ## Usage
 public/js/search-result-card.js:
 * To search through a site and list search results in card forms.
@@ -55,8 +52,12 @@ SOFTWARE.
 
 ## Author
 
-[Hiromasa Yano](https://github.com/yappynoppy)
+Hiromasa Yano
+<https://github.com/yappynoppy>
 
 ## Thanks
-[heroku static provider](https://github.com/nulltask/heroku-static-provider.git)
+* heroku static provider
+<https://github.com/nulltask/heroku-static-provider.git>
 
+* Bootstrap
+<https://getbootstrap.com/>
