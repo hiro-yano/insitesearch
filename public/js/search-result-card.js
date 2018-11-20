@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var parameter = getParameter();
   var totalCount = 0;
 
-  var pageList = ['index', 'orders', 'products', 'customers', 'reports', 'integrations'];
+  var pageList = ['index', 'orders', 'products', 'customers', 'reports', 'integrations', 'relativeContrast'];
 　var i;
   if(parameter != ''){
     for(i = 0; i < pageList.length; ++i){
