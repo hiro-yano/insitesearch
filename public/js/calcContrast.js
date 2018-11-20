@@ -66,3 +66,8 @@ function calc(){
 
 }
 
+
+function goCalc(){
+  if(window.event.keyCode==13)calc();
+}
+
