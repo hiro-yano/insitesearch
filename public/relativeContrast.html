@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Contrast</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.html">Help UI</a>
+      <input class="form-control form-control-dark w-100" type="text" id="search-text" placeholder="Search" aria-label="Search" onkeypress="enter(event.keyCode);"">
+
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                  <span data-feather="home"></span>
+                  Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="orders.html">
+                  <span data-feather="file"></span>
+                  Orders
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="products.html">
+                  <span data-feather="shopping-cart"></span>
+                  Products
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="customers.html">
+                  <span data-feather="users"></span>
+                  Customers
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="reports.html">
+                  <span data-feather="bar-chart-2"></span>
+                  Reports
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="integrations.html">
+                  <span data-feather="layers"></span>
+                  Integrations
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="relativeContrast.html">
+                  <span data-feather="cpu"></span>
+                  Contrast <span class="sr-only">(current)</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="target-area-list">
+
+<form name="calcContrastForm">            
+<table border="0">
+  <tr>
+    <td align="right"><b>R(0~255)</b></td>
+    <td><input type="text" name="R" size="30" maxlength="20" id="r"></td>
+
+  </tr>
+  <tr>
+    <td align="right"><b>G(0~255)</b></td>
+    <td><input type="text" name="G" size="30" maxlength="20" id="g"></td>
+
+  </tr>
+  <tr>
+    <td align="right"><b>B(0~255)</b></td>
+    <td><input type="text" name="B" size="30" maxlength="20" id="b"></td>
+
+  </tr>
+  <tr>
+    <td align="center"></td>
+    <td align="center"><b>OR</b></td>
+  </tr>
+  <tr>
+    <td align="right"><b>Hex(#+[3~6桁])</b></td>
+    <td><input type="text" name="R" size="30" maxlength="20" id="hex"></td>
+
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      
+        <input type="button" value="計算" onClick="calc()">
+      
+    </td>
+  </tr>
+  <tr>
+    <td>RGBの相対輝度:</td>
+    <td id="result_rgb">
+    </td>
+  </tr>
+  <tr>
+    <td>Hexの相対輝度:</td>
+    <td id="result_hex">
+    </td>
+  </tr>
+  
+</table>
+</form>
+
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script  src="js/calcContrast.js"></script>
+    <script  src="js/search-light.js"></script>
+
+<!--
+The MIT License (MIT)
+
+Copyright (c) 2013-2017 Cole Bemis
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+
+    
+
+  </body>
+</html>
+
+
