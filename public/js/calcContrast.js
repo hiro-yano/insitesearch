@@ -32,24 +32,37 @@ function hex2rgb ( hex ) {
 	} ) ;
 }
 
+function isReallyNaN(x) {
+  return x !== x;    
+}
+
 function calc(){
 	let R = document.forms.calcContrastForm.r.value;
 	let G = document.forms.calcContrastForm.g.value;
 	let B = document.forms.calcContrastForm.b.value;
 	let Hex = hex2rgb(document.forms.calcContrastForm.hex.value);
-	console.log(Hex);
+
 	let Hex_R = Hex[0];
 	let Hex_G = Hex[1];
 	let Hex_B = Hex[2];
 	let luminance_Hex = getRelativeLuminance(Hex_R,Hex_G,Hex_B);
 	let luminance_RGB = getRelativeLuminance(R,G,B);
-	console.log(luminance_Hex);
-
+	
 	var result_hex = document.getElementById("result_hex"); 
-	result_hex.innerHTML = luminance_Hex;
+	if(isReallyNaN(luminance_Hex)){
+		result_hex.innerHTML = "cannot caluclate";
+	}else{
+		result_hex.innerHTML = luminance_Hex;
+	}
+	
 
 	var result_rgb = document.getElementById("result_rgb"); 
-	result_rgb.innerHTML = luminance_RGB;
+	
+	if(isReallyNaN(luminance_RGB)){
+		result_rgb.innerHTML = "cannot caluclate";
+	}else{
+		result_rgb.innerHTML = luminance_RGB;
+	}
 
 }
 
