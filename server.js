@@ -1,15 +1,13 @@
 var express        = require('express');
 var app            = express();
-/*
+
 var user = process.env.USER;
 var pass = process.env.PASS;
 
 if (user && pass) {
   app.use(express.basicAuth(user, pass));
-}*/
+}
 
-app.use(express.logger('dev'));
-app.use(express.compress());
 app.use(express.static(__dirname + '/public'));
 
 var port = process.env.PORT || 3000;
