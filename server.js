@@ -19,5 +19,9 @@ app.use(bodyParser.urlencoded({ extended: false }))    // parse application/x-ww
 app.use(bodyParser.json())    // parse application/json
 app.use(methodOverride());                  // simulate DELETE and PUT*/
 
-app.listen(8080);   
-console.log('Magic happens on port 8080');          // shoutout to the user
+var port = process.env.PORT || 3000;
+app.listen(port);
+console.log("Listening on port " + port);
+
+
+// shoutout to the user
