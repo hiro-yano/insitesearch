@@ -56,8 +56,6 @@ Hiromasa Yano
 <https://github.com/yappynoppy>
 
 ## Thanks
-* heroku static provider
-<https://github.com/nulltask/heroku-static-provider.git>
 
 * Bootstrap
 <https://getbootstrap.com/>
