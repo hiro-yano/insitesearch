@@ -3,14 +3,14 @@ function getSRGB(_8bitColor) {
 }
 
 function getRGBForCalculateLuminance(rgb) {
-	if (rgb <= 0.03928){
+	if (rgb <= 0.03928) {
 		return rgb / 12.92;
 	} else {
-		return Math.pow(((rgb + 0.055) / 1.055), 2.4);
+		return Math.pow((rgb + 0.055) / 1.055, 2.4);
 	}
 }
 
-function getRelativeLuminance(r, g , b) {
+function getRelativeLuminance(r, g, b) {
 	let R = getRGBForCalculateLuminance(getSRGB(r));
 	let G = getRGBForCalculateLuminance(getSRGB(g));
 	let B = getRGBForCalculateLuminance(getSRGB(b));
@@ -18,25 +18,25 @@ function getRelativeLuminance(r, g , b) {
 }
 
 function getContrast(l1, l2) {
-	let bright = (l1 > l2) ? l1 : l2; // 明るい方の相対輝度
-	let dark   = (l1 < l2) ? l1 : l2; // 暗い方の相対輝度
+	let bright = l1 > l2 ? l1 : l2; // 明るい方の相対輝度
+	let dark = l1 < l2 ? l1 : l2; // 暗い方の相対輝度
 	return (bright + 0.05) / (dark + 0.05);
 }
 
-function hex2rgb ( hex ) {
-	if ( hex.slice(0, 1) == "#" ) hex = hex.slice(1) ;
-	if ( hex.length == 3 ) hex = hex.slice(0,1) + hex.slice(0,1) + hex.slice(1,2) + hex.slice(1,2) + hex.slice(2,3) + hex.slice(2,3) ;
+function hex2rgb(hex) {
+	if (hex.slice(0, 1) == "#") hex = hex.slice(1);
+	if (hex.length == 3) hex = hex.slice(0, 1) + hex.slice(0, 1) + hex.slice(1, 2) + hex.slice(1, 2) + hex.slice(2, 3) + hex.slice(2, 3);
 
-	return [ hex.slice( 0, 2 ), hex.slice( 2, 4 ), hex.slice( 4, 6 ) ].map( function ( str ) {
-		return parseInt( str, 16 ) ;
-	} ) ;
+	return [hex.slice(0, 2), hex.slice(2, 4), hex.slice(4, 6)].map(function (str) {
+		return parseInt(str, 16);
+	});
 }
 
 function isReallyNaN(x) {
-  return x !== x;    
+	return x !== x;
 }
 
-function calc(){
+function calc() {
 	let R = document.forms.calcContrastForm.r.value;
 	let G = document.forms.calcContrastForm.g.value;
 	let B = document.forms.calcContrastForm.b.value;
@@ -45,29 +45,25 @@ function calc(){
 	let Hex_R = Hex[0];
 	let Hex_G = Hex[1];
 	let Hex_B = Hex[2];
-	let luminance_Hex = getRelativeLuminance(Hex_R,Hex_G,Hex_B);
-	let luminance_RGB = getRelativeLuminance(R,G,B);
-	
-	var result_hex = document.getElementById("result_hex"); 
-	if(isReallyNaN(luminance_Hex)){
+	let luminance_Hex = getRelativeLuminance(Hex_R, Hex_G, Hex_B);
+	let luminance_RGB = getRelativeLuminance(R, G, B);
+
+	var result_hex = document.getElementById("result_hex");
+	if (isReallyNaN(luminance_Hex)) {
 		result_hex.innerHTML = "cannot caluclate";
-	}else{
+	} else {
 		result_hex.innerHTML = luminance_Hex;
 	}
-	
 
-	var result_rgb = document.getElementById("result_rgb"); 
-	
-	if(isReallyNaN(luminance_RGB)){
+	var result_rgb = document.getElementById("result_rgb");
+
+	if (isReallyNaN(luminance_RGB)) {
 		result_rgb.innerHTML = "cannot caluclate";
-	}else{
+	} else {
 		result_rgb.innerHTML = luminance_RGB;
 	}
-
 }
 
-
-function goCalc(){
-  if(window.event.keyCode==13)calc();
+function goCalc() {
+	if (window.event.keyCode == 13) calc();
 }
-
