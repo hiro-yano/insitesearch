@@ -1,4 +1,4 @@
-In-Site Search
+In-Site Search in client side
 ====
 Javascript to search a keyword within a site and list search results.
 
