@@ -92,8 +92,6 @@ function laod_html_and_insert_success(resp, parameter){
   var data = JSON.parse(resp);
   var totalCount = data.totalCount;
 
-  console.log(data);
-
   var e = document.getElementById('search-result-count');
   e.textContent =  totalCount + ' results';
 
