@@ -37,7 +37,7 @@ var load_html_and_insert = function (parameter) {
 
   //IE8+
   var request = new XMLHttpRequest();
-  var html_url = '/search/' + parameter;
+  var html_url = '/search?q=' + parameter;
 
   request.open('GET', html_url, true);
 
@@ -62,10 +62,6 @@ var load_html_and_insert = function (parameter) {
         var elem_txt_status = document.createTextNode("status:" + this.status);
         elem_p_status.appendChild(elem_txt_status);
 
-        var elem_p_responseText = elem_p_statusText.cloneNode(false);
-        var elem_txt_responseText_detail = document.createTextNode("responseText : ");
-        elem_p_responseText.appendChild(elem_txt_responseText_detail);
-
         var elem_div = document.createElement("div");
         var elem_txt_responseText = document.createTextNode(this.responseText);
         elem_div.appendChild(elem_txt_responseText);
@@ -82,12 +78,11 @@ var load_html_and_insert = function (parameter) {
   request = null;
 };
 
-function laod_html_and_insert_success(resp, parameter) {
+function laod_html_and_insert_success(resp, param) {
 
+  var parameter = decodeURIComponent(param);
   var data = JSON.parse(resp);
   var totalCount = data.totalCount;
-
-  console.log(data);
 
   var e = document.getElementById('search-result-count');
   e.textContent = totalCount + ' results';
@@ -163,7 +158,7 @@ function getParameter() {
   var urlParam = location.search.substring(1);
 
   if (urlParam) {
-    return decodeURIComponent(urlParam).trim();
+    return urlParam;
   } else {
     return '';
   }

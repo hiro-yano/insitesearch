@@ -15,7 +15,10 @@ if (user && pass) {
 
 app.use(express.static(__dirname + '/public'));
 
-app.get("/search/:word", function(req, res) {
+app.get("/search", function(req, res) {
+  console.log("*********");
+  console.log(req.query.q);
+  console.log("*********");
   
   var pageList = ['index', 'orders', 'products', 'customers', 'reports', 'integrations'];
   var i;
@@ -27,7 +30,8 @@ app.get("/search/:word", function(req, res) {
       var url = './public/' + pageList[i] + '.html';
       
       data = fs.readFileSync(url).toString();
-      var results = search.create_results(data, decodeURIComponent(req.params.word), targetAreaXPath);
+      
+      var results = search.create_results(data, req.query.q, targetAreaXPath);
       totalCount += results.strCount;
 
       var public_url = pageList[i] + '.html';

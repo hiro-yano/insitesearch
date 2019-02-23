@@ -22,7 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
   
-  function create_results(data, parameter, targetAreaXPath) {
+  function create_results(data, param, targetAreaXPath) {
+
+    var parameter = param;
 
     var libxmljs = require("libxmljs");
     var htmlDoc = libxmljs.parseHtmlString(data);
