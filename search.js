@@ -37,6 +37,7 @@ SOFTWARE.
     var targetAreaTag = htmlDoc.get(targetAreaXPath);
 
     var textnodes = [];
+    var text_textnodes = "";
 
     if(targetAreaTag!=null){
 
@@ -47,10 +48,10 @@ SOFTWARE.
           textnodes.push(childTextNode);
         });
       }
+      text_textnodes = targetAreaTag.text();
     }
     
     var str_count = 0;
-    var text_textnodes = textnodes.join('');
 
     str_count += strCount(parameter, text_textnodes);
     str_count += strCount(parameter, title);
@@ -58,7 +59,7 @@ SOFTWARE.
     var results = new Object();
     results.strCount = str_count;
     results.title = title;
-    results.textnodes = strExtract(parameter, textnodes)
+    results.textnodes = text_textnodes;
 　　　
     return results;
   }
