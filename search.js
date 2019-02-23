@@ -22,26 +22,37 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
   
-  function create_results(data, parameter) {
+  function create_results(data, parameter, targetAreaXPath) {
 
     var libxmljs = require("libxmljs");
     var htmlDoc = libxmljs.parseHtmlString(data);
     
-    var titleTag = htmlDoc.get('/html/head/title')
-    var title = titleTag.text();
-  
-    var bodyTag = htmlDoc.get('/html/body');
-  
-    var textnodes = [];
-    var bodyChildren = bodyTag.childNodes();
-    if (bodyChildren.length >= 1) {
-      getAllChildsTexts(bodyChildren, function (childTextNode) {
-        textnodes.push(childTextNode);
-      });
+    var titleTag = htmlDoc.get('/html/head/title');
+    var title = "";
+
+    if(titleTag!=null){
+      title = titleTag.text();
     }
   
+    var targetAreaTag = htmlDoc.get(targetAreaXPath);
+
+    var textnodes = [];
+
+    if(targetAreaTag!=null){
+
+      var targetAreaChildren = targetAreaTag.childNodes();
+      if (targetAreaChildren.length >= 1) {
+        
+        getAllChildsTexts(targetAreaChildren, function (childTextNode) {
+          textnodes.push(childTextNode);
+        });
+      }
+    }
+    
     var str_count = 0;
-    str_count += strCount(parameter, textnodes.join(''));
+    var text_textnodes = textnodes.join('');
+
+    str_count += strCount(parameter, text_textnodes);
     str_count += strCount(parameter, title);
 
     var results = new Object();
@@ -57,12 +68,17 @@ SOFTWARE.
   
     var i;
     for (i = 0; i < child.length; i++) {
-  
+      
       var children = child[i].childNodes();
       if (children.length >= 1) {
+        
         getAllChildsTexts(children, createResult);
       } else {
-        createResult(children.text());
+
+        if(child[i]!=null){
+          createResult(child[i].text());
+        }
+        
       }
     }
   };
@@ -85,13 +101,13 @@ SOFTWARE.
   };
 
   var strExtract = function (searchStr, list){
-    if (!searchStr || !str) return 0;
+    if (!searchStr || !list) return 0;
   
     var lowerSearchStr = searchStr.toLowerCase();
     var count = 0;
 
     list.some(function(str){
-        pos = str.toLowerCase.indexOf(lowerSearchStr);
+        pos = str.toLowerCase().indexOf(lowerSearchStr);
         if(pos != -1){
             return true;
         }

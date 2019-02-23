@@ -7,6 +7,8 @@ var search = require('./search.js');
 var user = process.env.USER;
 var pass = process.env.PASS;
 
+const targetAreaXPath = '//*[@id="target-area-list"]';
+
 if (user && pass) {
   app.use(express.basicAuth(user, pass));
 }
@@ -22,16 +24,17 @@ app.get("/search/:word", function(req, res) {
   var list_results = [];
 
   for (i = 0; i < pageList.length; ++i) {
-      var url = './public/src/' + pageList[i] + '.html';
+      var url = './public/' + pageList[i] + '.html';
 
-      fs.readFile(url , 'utf-8' , function (err, data) {
-        var results = search.create_results(data, req.params.word);
-        totalCount += results.strCount;
-        results.url = filename;
-        
-        list_results.push(JSON.stringify(results));
-      });
+      data = fs.readFileSync(url).toString();
+      var results = search.create_results(data, req.params.word, targetAreaXPath);
+      totalCount += results.strCount;
+      results.url = url;
+
+      list_results.push(JSON.stringify(results));
   }
+
+  console.log(list_results);
 
   var json = {
     "totalCount" : totalCount,
