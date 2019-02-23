@@ -45,7 +45,7 @@ SOFTWARE.
     var results = new Object();
     results.strCount = str_count;
     results.title = title;
-    results.textnodesExtracted = strExtract(parameter, textnodes)
+    results.textnodes = strExtract(parameter, textnodes)
 　　　
     return results;
   }
@@ -97,3 +97,7 @@ SOFTWARE.
       }
     }
   };
+
+module.exports = {
+    create_results: create_results
+};
