@@ -21,87 +21,33 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-
-  var create_results = function (data, parameter) {
-
-    var result_list = document.getElementById(insert_info_arr[0]);
-    
-    var elem_p_statusText = document.createElement("p");
-    var elem_txt_statusText = document.createTextNode("textStatus:" + this.statusText);
-
-    elem_p_statusText.appendChild(elem_txt_statusText);
-
-    var elem_p_status = elem_p_statusText.cloneNode(false);
-    var elem_txt_status = document.createTextNode("status:" + this.status);
-    elem_p_status.appendChild(elem_txt_status);
-
-    var elem_p_responseText = elem_p_statusText.cloneNode(false);
-    var elem_txt_responseText_detail = document.createTextNode("responseText : ");
-    elem_p_responseText.appendChild(elem_txt_responseText_detail);
-
-    var elem_div = document.createElement("div");
-    var elem_txt_responseText = document.createTextNode(this.responseText);
-    elem_div.appendChild(elem_txt_responseText);
-
-    result_list.appendChild(elem_p_statusText);
-    result_list.appendChild(elem_p_status);
-    result_list.appendChild(elem_p_responseText);
-    result_list.appendChild(elem_div);
-
-    request.send();
-    request = null;
-  };
   
-  function create_results(resp, parameter) {
+  function create_results(data, parameter) {
   
     var parser = new DOMParser();
-    var out_html = parser.parseFromString(resp, "text/html");
+    var out_html = parser.parseFromString(data, "text/html");
     var title = out_html.getElementsByTagName("title")[0].innerHTML;
   
-    var listById_innerHTML = out_html.getElementById(insert_info_arr[1]).innerHTML;
-    var listById_dom = parser.parseFromString(listById_innerHTML, "text/html");
+    var body = out_html.getElementsByTagName("body")[0].innerHTML;
+    var body_dom = parser.parseFromString(body, "text/html");
   
-    var listById = '';
-    if (listById_dom.hasChildNodes()) {
-      getAllChildsTexts(listById_dom.childNodes, function (childTextContent) {
-        listById = listById + childTextContent;
+    var textnodes = [];
+    if (body_dom.hasChildNodes()) {
+      getAllChildsTexts(listById_dom.childNodes, function (childTextNode) {
+        textnodes.push(childTextNode);
       });
     }
   
     var str_count = 0;
-    str_count += strCount(parameter, listById);
+    str_count += strCount(parameter, textnodes.join(''));
     str_count += strCount(parameter, title);
-  
-    if (str_count != 0) {
-  
-      var elm_topdiv = document.createElement('div');
-      elm_topdiv.className = 'card';
-      elm_topdiv.id = 'card-hight';
-  
-      var elm_subdiv = elm_topdiv.cloneNode(false);
-      elm_subdiv.className = 'card-body';
-  
-      var elm_h5 = document.createElement('h5');
-      elm_h5.className = 'card-title';
-  
-      var elm_highLitedAhref = document.createElement('a');
-      elm_highLitedAhref.setAttribute('href', html_url + "?" + encodeURIComponent(parameter));
-      elm_highLitedAhref.innerHTML = doHighLight(parameter, title);
-  
-      elm_h5.appendChild(elm_highLitedAhref);
-  
-      var elm_p = document.createElement('p');
-      elm_p.className = 'card-text';
-      elm_p.innerHTML = doHighLight(parameter, listById);
-  
-      elm_subdiv.appendChild(elm_h5);
-      elm_subdiv.appendChild(elm_p);
-      elm_topdiv.appendChild(elm_subdiv);
-  
-      var result_list = document.getElementById(insert_info_arr[0]);
-      result_list.appendChild(elm_topdiv);
-    }
-    countResultsFn(str_count);
+
+    var results = new Object();
+    results.strCount = str_count;
+    results.title = title;
+    results.textnodesExtracted = strExtract(parameter, textnodes)
+　　　
+    return results;
   }
   
   var strCount = function (searchStr, str) {
@@ -110,7 +56,7 @@ SOFTWARE.
     var lowerSearchStr = searchStr.toLowerCase();
     var lowerStr = str.toLowerCase();
     var count = 0,
-        pos = lowerStr.indexOf(lowerSearchStr);
+    pos = lowerStr.indexOf(lowerSearchStr);
   
     while (pos !== -1) {
       count++;
@@ -120,28 +66,23 @@ SOFTWARE.
   
     return count;
   };
-  
-  var doHighLight = function (searchStr, str) {
+
+  var strExtract = function (searchStr, list){
     if (!searchStr || !str) return 0;
   
     var lowerSearchStr = searchStr.toLowerCase();
-    var lowerStr = str.toLowerCase();
-    var pos = lowerStr.indexOf(lowerSearchStr);
-    var highLitedStr = str;
-    let spanHead = '<span class="highlight">';
-    let spanTail = '</span>';
-    let spanLen = spanHead.length + spanTail.length;
-    let searchStrLen = searchStr.length;
+    var count = 0;
+
+    list.some(function(str){
+        pos = str.toLowerCase.indexOf(lowerSearchStr);
+        if(pos != -1){
+            return true;
+        }
+        count ++;
+    });
   
-    while (pos !== -1) {
-  
-      highLitedStr = [highLitedStr.slice(0, pos), spanHead, highLitedStr.slice(pos, pos + searchStrLen), spanTail, highLitedStr.slice(pos + searchStrLen)].join('');
-  
-      pos = highLitedStr.toLowerCase().indexOf(lowerSearchStr, pos + spanLen + 1);
-    }
-  
-    return highLitedStr;
-  };
+    return list.slice(count, 5).join('');
+  }
   
   var getAllChildsTexts = function (child, createResult) {
     if (!child || !createResult) return '';
@@ -156,20 +97,3 @@ SOFTWARE.
       }
     }
   };
-  
-  function enter(code) {
-    if (13 === code) {
-      var para = '?' + encodeURIComponent(document.getElementById('search-text').value);
-      window.location.href = 'searchresult.html' + para;
-    }
-  }
-  
-  function getParameter() {
-    var urlParam = location.search.substring(1);
-  
-    if (urlParam) {
-      return decodeURIComponent(urlParam).trim();
-    } else {
-      return '';
-    }
-  }

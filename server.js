@@ -22,13 +22,22 @@ app.get("/search/:word", function(req, res) {
   for (i = 0; i < pageList.length; ++i) {
       fs.readFile('./public/src/' + pageList[i] + '.html', 'utf-8' , doReard );
   }
+  var str_count = 0;
+  var list_results = [];
 
   function doReard(err, data) {
-    search.create_results(data, req.params.word, );
+    var results = search.create_results(data, req.params.word);
+    str_count += results.strCount;
+    
+    list_results.push(JSON.stringify(results));
   }
 
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write();
+  var json = {
+    "totalStrCount" : str_count,
+    "results" : list_results
+  }
+
+  res.json(json);
   res.end();
 
 });
