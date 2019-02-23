@@ -36,8 +36,6 @@ app.get("/search/:word", function(req, res) {
       list_results.push(results);
   }
 
-  console.log(list_results);
-
   var json = {
     "totalCount" : totalCount,
     "results" : list_results
