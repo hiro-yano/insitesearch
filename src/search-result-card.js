@@ -175,7 +175,7 @@ function getParameter(){
   var urlParam = location.search.substring(1);
  
   if(urlParam) {
-    return decodeURIComponent(urlParam).trim();
+    return urlParam;
   }else{
     return '';
   }

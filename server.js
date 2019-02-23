@@ -27,7 +27,7 @@ app.get("/search/:word", function(req, res) {
       var url = './public/' + pageList[i] + '.html';
       
       data = fs.readFileSync(url).toString();
-      var results = search.create_results(data, req.params.word, targetAreaXPath);
+      var results = search.create_results(data, decodeURIComponent(req.params.word), targetAreaXPath);
       totalCount += results.strCount;
 
       var public_url = pageList[i] + '.html';
