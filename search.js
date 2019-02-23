@@ -23,17 +23,19 @@ SOFTWARE.
 */
   
   function create_results(data, parameter) {
+
+    var libxmljs = require("libxmljs");
+    var htmlDoc = libxmljs.parseHtmlString(data);
+    
+    var titleTag = htmlDoc.get('/html/head/title')
+    var title = titleTag.text();
   
-    var parser = new DOMParser();
-    var out_html = parser.parseFromString(data, "text/html");
-    var title = out_html.getElementsByTagName("title")[0].innerHTML;
-  
-    var body = out_html.getElementsByTagName("body")[0].innerHTML;
-    var body_dom = parser.parseFromString(body, "text/html");
+    var bodyTag = htmlDoc.get('/html/body');
   
     var textnodes = [];
-    if (body_dom.hasChildNodes()) {
-      getAllChildsTexts(listById_dom.childNodes, function (childTextNode) {
+    var bodyChildren = bodyTag.childNodes();
+    if (bodyChildren.length >= 1) {
+      getAllChildsTexts(bodyChildren, function (childTextNode) {
         textnodes.push(childTextNode);
       });
     }
@@ -49,6 +51,21 @@ SOFTWARE.
 　　　
     return results;
   }
+
+  var getAllChildsTexts = function (child, createResult) {
+    if (!child || !createResult) return '';
+  
+    var i;
+    for (i = 0; i < child.length; i++) {
+  
+      var children = child[i].childNodes();
+      if (children.length >= 1) {
+        getAllChildsTexts(children, createResult);
+      } else {
+        createResult(children.text());
+      }
+    }
+  };
   
   var strCount = function (searchStr, str) {
     if (!searchStr || !str) return 0;
@@ -84,19 +101,7 @@ SOFTWARE.
     return list.slice(count, 5).join('');
   }
   
-  var getAllChildsTexts = function (child, createResult) {
-    if (!child || !createResult) return '';
   
-    var i;
-    for (i = 0; i < child.length; i++) {
-  
-      if (child[i].hasChildNodes()) {
-        getAllChildsTexts(child[i].childNodes, createResult);
-      } else {
-        createResult(child[i].textContent);
-      }
-    }
-  };
 
 module.exports = {
     create_results: create_results
