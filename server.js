@@ -25,13 +25,15 @@ app.get("/search/:word", function(req, res) {
 
   for (i = 0; i < pageList.length; ++i) {
       var url = './public/' + pageList[i] + '.html';
-
+      
       data = fs.readFileSync(url).toString();
       var results = search.create_results(data, req.params.word, targetAreaXPath);
       totalCount += results.strCount;
-      results.url = url;
 
-      list_results.push(JSON.stringify(results));
+      var public_url = pageList[i] + '.html';
+      results.url = public_url;
+
+      list_results.push(results);
   }
 
   console.log(list_results);
