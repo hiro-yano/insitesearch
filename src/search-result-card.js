@@ -101,7 +101,6 @@ function laod_html_and_insert_success(resp, param){
       if(obj.strCount >= 1){
         var elm_topdiv = document.createElement('div');
         elm_topdiv.className = 'card';
-        elm_topdiv.id = 'card-hight';
 
         var elm_subdiv = elm_topdiv.cloneNode(false);
         elm_subdiv.className = 'card-body';
