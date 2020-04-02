@@ -55,7 +55,7 @@ SOFTWARE.
 ## Author
 
 Hiromasa Yano
-<https://github.com/yappynoppy>
+<https://github.com/hiro-yano>
 
 ## Thanks
 
