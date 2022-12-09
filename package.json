@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "libxmljs": "^0.19.5"
   },
   "scripts": {
